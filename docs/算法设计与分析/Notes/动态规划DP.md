@@ -10,7 +10,7 @@
 - 一个递归算法 $A$ 的 **子问题图** 定义如下：
 	- **vertex**: the instance of the problem
 	- **directed edge**: $I\to J$ if and only if when $A$ invoked on $I$, it makes a recursive call **directly** on instance $J$.
-- Portion $A(P)$ of the subproblem graph for Fibonacci function: here is fib(6) ![[fibonacci-subproblem-pic.png]]
+- Portion $A(P)$ of the subproblem graph for Fibonacci function: here is fib(6) ![fibonacci-subproblem-pic|500](https://kold.oss-cn-shanghai.aliyuncs.com/fibonacci-subproblem-pic.png)
 ## 拓扑序
 Fibonacci 可以拉成一个拓扑序（**因为是有向无环图**）, 即
 > 以拓扑排序展示同一个图，所有的节点按照其完成时间的逆序被排成从左向右的一条水平线，所有边都是从左指向右。见[[图#构造逆拓扑序]]
@@ -28,7 +28,7 @@ Fibonacci 可以拉成一个拓扑序（**因为是有向无环图**）, 即
 	- **Record** the subproblem solutions in a **dictionary**
 
 可以说，DP 就是一种**新概念递归**
-![[dp-new-concept-recursion.png]]
+![dp-new-concept-recursion|500](https://kold.oss-cn-shanghai.aliyuncs.com/dp-new-concept-recursion.png)
 ## 矩阵连续乘法 DP 问题（Matrix Multiplication）
 ### 问题描述
 - **The task**
