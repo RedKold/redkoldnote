@@ -96,8 +96,8 @@
 
 
 ### Leaky Bucket
-![[leaky-bucket-1.png]]
-![[leaky-bucket-2.png]]
+![leaky-bucket-1|500](https://kold.oss-cn-shanghai.aliyuncs.com/leaky-bucket-1.png)
+![leaky-bucket-2|500](https://kold.oss-cn-shanghai.aliyuncs.com/leaky-bucket-2.png)
 ### Token Packet
 
 

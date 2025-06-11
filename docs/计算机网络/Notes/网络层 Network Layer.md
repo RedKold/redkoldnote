@@ -28,11 +28,11 @@
 ## Router 工作原理
 ### input port function
 Longest prefix matching rule(最长前缀匹配)
-![[longest-prefix-matching-rule.png]]
+![longest-prefix-matching-rule|500](https://kold.oss-cn-shanghai.aliyuncs.com/longest-prefix-matching-rule.png)
 
 使用一个**路由树** 可以达到大概 $O(\log n)$ 的查找速度
 
-![[prefix-matching-tree-structure.png]]
+![prefix-matching-tree-structure|500](https://kold.oss-cn-shanghai.aliyuncs.com/prefix-matching-tree-structure.png)
 
 
 在传输过程中， 
@@ -44,7 +44,7 @@ IP header 传输过程发生变化，但是 TCP header 和 data 保持不变。�
 
 
 ### output port functions
-![[output-port-functions.png|400]]
+![output-port-functions|400|500](https://kold.oss-cn-shanghai.aliyuncs.com/output-port-functions.png)
 we will classify an IP packet based on a number of fields in the packet header, e.g.,
 - Source/destination IP address(32 bits)
 - Source/destination TCP port number(16 bits)
@@ -54,12 +54,12 @@ we will classify an IP packet based on a number of fields in the packet header, 
 ### Connecting inputs to ouputs
 - Transfer packet from input to output
 - Three types of switching
-- ![[switching-fabrics.png]]
+- ![switching-fabrics|500](https://kold.oss-cn-shanghai.aliyuncs.com/switching-fabrics.png)
 	- 共享内存：不支持并发访问。一个内存一次只能处理一个路由
 	- 总线（bus）：不支持并发访问。因为一次只有一个分组能跨越总线
 	- 纵横总线：可以并发访问。
 ### Implement Protocols
-![[datagram-vs-virtual-circuit.png]]
+![datagram-vs-virtual-circuit|500](https://kold.oss-cn-shanghai.aliyuncs.com/datagram-vs-virtual-circuit.png)
 Datagram： IP 协议。用性能消耗，获得拓展性。
 Virtual Circuit：需要专用的资源，牺牲了用户来换取性能。
 ## Datagram（IP）
@@ -110,7 +110,7 @@ Router discards incoming packets when **buffer is full**
 ### IP Packet Structure
 #### Header
 #必考
-![[Pasted image 20250402104503.png]]
+![Pasted image 20250402104503|500](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250402104503.png)
 IP 头动态部分
 - **TTL：time to live 会更新。**
 - checksum：由于 TTL 更新，重新计算 checksum
@@ -123,7 +123,7 @@ IP 头动态部分
 	- Host part (low order bits)
 - **Physical network**
 	- Can reach each other without intervening router（无路由器参与的最大连通分支）
-![[IPv4-address-formats.png]]
+![IPv4-address-formats|500](https://kold.oss-cn-shanghai.aliyuncs.com/IPv4-address-formats.png)
 用前缀标志类型 ABCDE
 
 #### Class A
@@ -145,7 +145,7 @@ Range 192.0.0.x to 223.255.255.x
 **NEARLY ALL ALLOCATED**
 
 #### Inter-Networks with Addresses
-![[inter-network-with-addresses.png]]
+![inter-network-with-addresses|500](https://kold.oss-cn-shanghai.aliyuncs.com/inter-network-with-addresses.png)
 #### 子网掩码(subnet mask)
 用来标记是否在一个子网中。
 子网掩码 (subnet mask)又叫网络掩码、地址掩码、子网络遮罩，它**用来指明一个 IP地址的哪些位标识的是主机所在的子网，以及哪些位标识的是主机的位掩码**。子网掩码不能单独存在，它必须结合IP地址一起使用。**子网掩码是一个32位地址**，用于屏蔽IP地址的一部分以区别网络标识和主机标识，并说明该IP地址是在局域网上，还是在广域网上。
@@ -180,7 +180,7 @@ DHCP（Dynamic Host Configuration Protocol, DHCP）动态主机配置协议。
 	 - Identifies type of the next header 
 	 - Extension or next layer up 
  Source / Destination Address (128 bits)
-![[ip-packet-structure.png]]
+![ip-packet-structure|500](https://kold.oss-cn-shanghai.aliyuncs.com/ip-packet-structure.png)
 
 #### Transition from IPv4 to IPv6
 有两种推荐的方法：
@@ -201,7 +201,7 @@ NAT 也起到了一个 **防火墙** 的作用。外界的攻击很难直接攻�
 
 ## 子网 subnet
 - 一个子网（们）的例子
-- ![[subnets.png]]
+- ![subnets|500](https://kold.oss-cn-shanghai.aliyuncs.com/subnets.png)
 ### 为什么需要子网？
 子网解决的是“网络地址不满足问题”（network inadequacy）
 
@@ -211,7 +211,7 @@ NAT 也起到了一个 **防火墙** 的作用。外界的攻击很难直接攻�
 	- Local routers route within subnetted network
 - 在对外界通信时，一个子网系统可视作一个单独的网络 (代表)（Subnets looks to rest of internet like a single network）
 	- Insulate overall Internet from growth of network numbers and routing complexity
-![[subnets-to-the-rest.png]]
+![subnets-to-the-rest|500](https://kold.oss-cn-shanghai.aliyuncs.com/subnets-to-the-rest.png)
 可见，一个子网系统中的网络以同一个单独的 `141.14.0.0` 向外沟通。
 同理 `the rest of the internet` 来了 datagram，也通过子网系统做路由
 
@@ -223,7 +223,7 @@ NAT 也起到了一个 **防火墙** 的作用。外界的攻击很难直接攻�
 	`n` 为 24，e.g.，则表示 IP 的前 24 位是网络地址，剩余 8 位是主机地址。（子网中的标记）
 	
 
-![[cidr-notation.png]]
+![cidr-notation|500](https://kold.oss-cn-shanghai.aliyuncs.com/cidr-notation.png)
 为了更熟悉 `CIDR` 表示以及如何分配，可以看这个题[[HW4_231275036_朱晗#P15（子网分配问题）|子网分配问题p15]]
 - 同时图中可以读出[[#子网掩码(subnet mask)]] 前 `20 bit` 是 1，所以 `n=20`
 
@@ -240,7 +240,7 @@ Dijkstra 算法和 B-F 最短路径算法广泛应用
 	- **OSPF**（Open Shortest Path First）
 		- 信息：**LS（Link state）**（**链路状态**）
 		- 算法：Dijkstra
-		- OSPF正是使用SPF算法(即 Dijkstra)来计算最短路径树。它使用“Cost”作为路由度量。使用链路状态数据库（LSDB）用来保存当前网络拓扑结构，路由器上属于同一区域的链路状态数据库是相同的（属于多个区域的路由器会为每个区域维护一份链路状态数据库）。![[SPF-tree.png]]
+		- OSPF正是使用SPF算法(即 Dijkstra)来计算最短路径树。它使用“Cost”作为路由度量。使用链路状态数据库（LSDB）用来保存当前网络拓扑结构，路由器上属于同一区域的链路状态数据库是相同的（属于多个区域的路由器会为每个区域维护一份链路状态数据库）。![SPF-tree|500](https://kold.oss-cn-shanghai.aliyuncs.com/SPF-tree.png)
 #### RIP vs OSFP
 - RIP
 	- 配置简单，适用于小型网络（小于 15 跳）
@@ -286,7 +286,7 @@ $$
 #### Count to infinity (无穷计数)
 距离向量中可能出现 **路径毒化**，也就是：距离向量出现了 `count to inf` 的问题，这篇文章说的很好
 [路由毒化以及毒性逆转方法](https://blog.csdn.net/tianlongtc/article/details/80261581)
-简单来说，![[Pasted image 20250506164702.png]]
+简单来说，![Pasted image 20250506164702|500](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250506164702.png)
 - 当链路费用增加（甚至断开，即到 inf）时候，考虑 Y 的更新：
 	- 在 `y-x` 更新从 4 到 60 时，`Z` 的距离向量是 `d(X)=5,d(Y)=1, d(Z)=0`,
 	- 于是 Y 在更新向量的时候，发现 `Z` 到 `X` 距离只有 5，所以更新了 `Y-X=6`  显然逻辑错误，因为这条为 5 的路径经过了 Y，而 Y-X 的权值已经增大，` Y ` 将错误的更新报文发给 ` Z `
