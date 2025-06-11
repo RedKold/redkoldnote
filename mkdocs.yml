@@ -1,8 +1,9 @@
-site_name: obsidian-mkdocs template
+site_name: redkold-note
 
 theme:
-    name: 'material'
+    name: material
     palette:
+    #primary: blue grey
 
     # Light mode
     - media: "(prefers-color-scheme: light)"
@@ -20,7 +21,12 @@ theme:
       accent: blue
       toggle:
         icon: material/toggle-switch
-        name: Switch to light mode
+        name: Switch to light mode]
+    
+    icon:
+      repo: fontawesome/brands/github #github icon
+    repo_url: https://github.com/RedKold/redkoldnote
+    repo_name: redkold.github.io
 
 # Extensions
 markdown_extensions:
