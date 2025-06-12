@@ -48,8 +48,12 @@ Round-Trip-Time:
 - 一个短分组从客户到服务器然后再返回客户所花费的时间
 - 包括分组 propagation delay, queue delay, and packet process delay
 在本题的例子里，RTT 严重拖累了效率，我们想到改良方法
+### 关于 Estimate RTT 的计算
+`Estimate RTT`
 
-### Pipelining: increase dutilization 
+计算公式：
+`EstimatedRTT_new = (1-α) × EstimatedRTT_old + α × SampleRTT`
+### Pipelining: increased utilization 
 ![[a0e859817c285cb7e429923a8f237af2_720.png]]
 
 ### Sliding window

@@ -82,7 +82,7 @@
 		- *man (or woman) in the middle attack*
 		- Trudy poses as Alice (to Bob) , and as Bob (to Alice)
 		- ![[middle-attack.png]]
-		- Trudy 用了自己的私钥和公钥，而 Bob 无法判断是 Trudy 发送的公钥还是 Alice 发送的。
+		- Trudy 用了自己的**私钥和公钥，而 Bob 无法判断是 Trudy 发送的公钥还是 Alice 发送的。**
 		- **可以窃听，虽然不能篡改**
 
 
