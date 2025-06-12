@@ -223,6 +223,7 @@ NAT 也起到了一个 **防火墙** 的作用。外界的攻击很难直接攻�
 #### 如果能抓包，如何确认 NAT 后的主机数量
 
 是一道很有意思的习题[[HW4_231275036_朱晗#P19|显示NAT主机数量]]
+- 根本上来说，拿 BASIC NAT 举例，是因为 NAT 实现 NAT 系统中某个 IP 到对外的 IP 的转换是顺序进行的，所以其标识号（比如对外的端口）是顺序变化的。所以我们对于抓包找到最小的和最大的标识号就可以了。
 
 ## 子网 subnet
 - 一个子网（们）的例子
@@ -258,6 +259,7 @@ NAT 也起到了一个 **防火墙** 的作用。外界的攻击很难直接攻�
 这部分是典型的**图问题**：网络中有很多节点，网络连接有代价，即权值。这自然涉及到最优化网络通信代价——如何设计通信路径即设计路由的方法。
 Dijkstra 算法和 B-F 最短路径算法广泛应用
 ### IGP
+**IGP**是
 - IGP
 	- **RIP**（Routing Information Protocol）1 st Generation _动态路由协议_
 		- 信息使用：**Distance Vector** (DV) 距离向量
@@ -331,22 +333,25 @@ $$
 
 
 
-### EGP-Inter-AS protocols
-### BGP (Border Gateway Protocol)
+### EGP
+EGP 是**Exterior Gateway Protocol** 的缩写，指的是一种用于自治系统（AS）之间路由信息交换的协议。它属于互联网路由协议的一种，主要用于在不同的自治系统之间传递路由信息。
+
+BGP 是 EGP 的一种协议
+#### BGP (Border Gateway Protocol)
 网络中边缘的网络节点来对话的问题。
 - Not Picking shortest-path routes
 - Selects the best route based on policy, not shortest distance (i.e., least-cost)
 
 关键思想—— **ADVERTISE the entire path**
 
-#### BGP如何解决环路？
+##### BGP如何解决环路？
 - **Loop avoidance is straightforward** (simply discard paths with loops
 具体而言：通过携带 **AS 路由信息**，解决路由循环问题。
 BGP（边界网关协议）通过一种机制称为**AS路径属性（AS Path Attribute）**，有效地解决了路由循环问题。这种机制依赖于每个自治系统（AS）的独特标识符和路径信息。以下是它的工作原理：
 
 ---
 
-##### **AS路径属性的核心概念**
+###### **AS路径属性的核心概念**
 
 1. **AS路径记录**：
     
@@ -363,7 +368,7 @@ BGP（边界网关协议）通过一种机制称为**AS路径属性（AS Path At
 
 ---
 
-##### **BGP防止路由循环的机制**
+###### **BGP防止路由循环的机制**
 
 - **丢弃循环路径**：  
     如果BGP路由器检测到AS路径中存在自己的AS号，它会直接丢弃这条路由，避免形成循环。
@@ -374,7 +379,7 @@ BGP（边界网关协议）通过一种机制称为**AS路径属性（AS Path At
 
 ---
 
-##### **示例：AS路径循环检测**
+###### **示例：AS路径循环检测**
 
 假设以下拓扑：
 
@@ -400,7 +405,7 @@ graph TD;
 
 ---
 
-##### **AS路径的其他作用**
+###### **AS路径的其他作用**
 
 1. **防止循环**：  
     AS路径是BGP协议中最基本的防循环机制。只要AS路径信息是准确的，就能有效防止循环问题。
@@ -416,7 +421,7 @@ graph TD;
     
 
 ---
-#### BGPs
+##### BGPs
 - eBGP: 
 	- BGP sessions between **border routers in different ASes** 
 	-  Learn routes to external destinations 
