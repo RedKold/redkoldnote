@@ -189,21 +189,42 @@ DHCP（Dynamic Host Configuration Protocol, DHCP）动态主机配置协议。
 
 ### 网关
 
-### Network Address Translation
+### Network Address Translation（NAT）
 #必考 
 - NAT（网络地址转换，许多同学的 ip 映射为一个统一的 nju 出去的 ip）
 	- Enables different sets of IP addresses for internal and external traffic 
 三种 NAT
 - Static NAT
+	- 静态 NAT：一个内部 IP 绑定一个对应的外部地址
 - Dynamic NAT 
+	- 动态 NAT：动态分配外部 IP 给内部设备（用一个 IP 池），谁用就分配给谁
+- Single-Address
+	- 只有一个外部ip，所有内部ip对外通讯时**都**会被进行替换
+
 NAT 也起到了一个 **防火墙** 的作用。外界的攻击很难直接攻击虚拟 ip
 
+- 给内部网络和外部网络分配不同的IP集（不同内部网络可以使用**相同**的ip）
+- 来解决地址不够使用的问题
+- 三个网段：10、172、192
+
+#### 优点
+
+- 安全：**隐藏内部ip地址（一个外部地址代表了许多不同的内部地址）**
+- 使得一个组织有多个不同ip地址（来分配给不同的设备）
+- 便于切换isp（只需要重新配置网关），不需要修改内部设备的配置
+
+#### 其他特点
+- 结合**四层次端口**，用一个ip传输不同信息（实现对输入的信息发送给特定的设备）
+- 路由器维护一个nat转发表，将外部端口与内部ip绑定，当外部ip向路由器发送信息时，会根据使用的端口向特定的内部设备转发消息
+- ![image-20230331102920520](https://thdlrt.oss-cn-beijing.aliyuncs.com/image-20230331102920520.png)
+    
+- ![image-20230331103352838](https://thdlrt.oss-cn-beijing.aliyuncs.com/image-20230331103352838.png)
 
 ## 子网 subnet
 - 一个子网（们）的例子
 - ![subnets|500](https://kold.oss-cn-shanghai.aliyuncs.com/subnets.png)
 ### 为什么需要子网？
-子网解决的是“网络地址不满足问题”（network inadequacy）
+子网解决的是**“网络地址不满足问题”（network inadequacy）**
 
 - Host portion of address partitioned into **subnet** number and host number
 	- 子网掩码 (subnet mask)  indicates which bits are ==subnet number==, and which are host number
@@ -236,27 +257,28 @@ Dijkstra 算法和 B-F 最短路径算法广泛应用
 - IGP
 	- **RIP**（Routing Information Protocol）1 st Generation _动态路由协议_
 		- 信息使用：**Distance Vector** (DV) 距离向量
-		- 路径算法：B-F
+		- 路径算法：B-F（Bellman-Ford）
 	- **OSPF**（Open Shortest Path First）
 		- 信息：**LS（Link state）**（**链路状态**）
 		- 算法：Dijkstra
-		- OSPF正是使用SPF算法(即 Dijkstra)来计算最短路径树。它使用“Cost”作为路由度量。使用链路状态数据库（LSDB）用来保存当前网络拓扑结构，路由器上属于同一区域的链路状态数据库是相同的（属于多个区域的路由器会为每个区域维护一份链路状态数据库）。![SPF-tree|500](https://kold.oss-cn-shanghai.aliyuncs.com/SPF-tree.png)
+		- OSPF正是使用SPF算法(即 Dijkstra)来计算最短路径树。它使用“Cost”作为路由度量。使用链路状态数据库 **（LSDB）** 用来保存当前网络拓扑结构，路由器上属于同一区域的链路状态数据库是相同的（属于多个区域的路由器会为每个区域维护一份链路状态数据库）。
+		- ![SPF-tree|500](https://kold.oss-cn-shanghai.aliyuncs.com/SPF-tree.png)
 #### RIP vs OSFP
 - RIP
 	- 配置简单，适用于小型网络（小于 15 跳）
 	- 可分布式实现
 
-	- 收敛速度慢
-	- 网络是一个平面，不适合大规模网络
+	- **收敛速度慢**
+	- **网络是一个平面，不适合大规模网络**
 - OSPF
 	- 收敛速度快，无跳数限制
 	- 支持不同服务类型选路
 	- 支持身份认证
 	- 支持层次式网络
 
-	- 集中式算法
-	- 每个节点需要维护全局拓扑
-	- 配置复杂
+	- **集中式算法**
+	- **每个节点需要维护全局拓扑**
+	- **配置复杂**
 
 
 ### 距离向量算法详细介绍
