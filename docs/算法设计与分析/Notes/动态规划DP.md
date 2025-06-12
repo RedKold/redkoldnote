@@ -13,7 +13,7 @@
 - Portion $A(P)$ of the subproblem graph for Fibonacci function: here is fib(6) ![fibonacci-subproblem-pic|500](https://kold.oss-cn-shanghai.aliyuncs.com/fibonacci-subproblem-pic.png)
 ## 拓扑序
 Fibonacci 可以拉成一个拓扑序（**因为是有向无环图**）, 即
-> 以拓扑排序展示同一个图，所有的节点按照其完成时间的逆序被排成从左向右的一条水平线，所有边都是从左指向右。见[[图#构造逆拓扑序]]
+> 以拓扑排序展示同一个图，所有的节点按照其完成时间的逆序被排成从左向右的一条水平线，所有边都是从左指向右。见[[vault/redkoldnote/docs/算法设计与分析/Notes/图#构造逆拓扑序]]
 
 我们的**动态规划思路**，就是利用 **子问题图**，减少重复计算（依靠记忆功能）
 
@@ -22,7 +22,7 @@ Fibonacci 可以拉成一个拓扑序（**因为是有向无环图**）, 即
 	- Compute each subproblem **only once**
 - **Basic process of a "smart" recursion**
 	- Find a ***reverse topological order*** for the subproblem graph
-		- 逆拓扑序的操作天然让我们想到 [[图#DAG (有向无环图)|DAG]] 和 [[图#DFS|DFS]]
+		- 逆拓扑序的操作天然让我们想到 [[vault/redkoldnote/docs/算法设计与分析/Notes/图#DAG (有向无环图)|DAG]] 和 [[vault/redkoldnote/docs/算法设计与分析/Notes/图#DFS|DFS]]
 
 	- Scheduling the subproblems according to the **reverse topological order**
 	- **Record** the subproblem solutions in a **dictionary**
@@ -270,7 +270,7 @@ where $I_{A\neq B}=1\iff A\neq B,else=0$
 # 从 DP 视角看算法
 ## Floyd 算法
 
-[[图#图优化问题#Floyd 算法（单源最短路径 2）|Floyd算法参考]]
+[[vault/redkoldnote/docs/算法设计与分析/Notes/图#图优化问题#Floyd 算法（单源最短路径 2）|Floyd算法参考]]
 其中本质的 DP 状态转移方程就是
 ![[Pasted image 20250515103051.png]]
 $$
@@ -332,4 +332,4 @@ $$
 
 
 ## 找零钱问题
-[[231275036 朱晗 作业6#考虑零钱兑换问题的各种变体]]
+[[未命名文件夹/redkoldnote/docs/算法设计与分析/作业/assignment6/231275036 朱晗 作业6#考虑零钱兑换问题的各种变体]]

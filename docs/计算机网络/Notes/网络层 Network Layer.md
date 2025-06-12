@@ -222,7 +222,7 @@ NAT 也起到了一个 **防火墙** 的作用。外界的攻击很难直接攻�
 
 #### 如果能抓包，如何确认 NAT 后的主机数量
 
-是一道很有意思的习题[[HW4_231275036_朱晗#P19|显示NAT主机数量]]
+是一道很有意思的习题[[未命名文件夹/redkoldnote/docs/计算机网络/homework/HW4_231275036_朱晗#P19|显示NAT主机数量]]
 - 根本上来说，拿 BASIC NAT 举例，是因为 NAT 实现 NAT 系统中某个 IP 到对外的 IP 的转换是顺序进行的，所以其标识号（比如对外的端口）是顺序变化的。所以我们对于抓包找到最小的和最大的标识号就可以了。
 
 ## 子网 subnet
@@ -250,7 +250,7 @@ NAT 也起到了一个 **防火墙** 的作用。外界的攻击很难直接攻�
 	
 
 ![cidr-notation|500](https://kold.oss-cn-shanghai.aliyuncs.com/cidr-notation.png)
-为了更熟悉 `CIDR` 表示以及如何分配，可以看这个题[[HW4_231275036_朱晗#P15（子网分配问题）|子网分配问题p15]]
+为了更熟悉 `CIDR` 表示以及如何分配，可以看这个题[[未命名文件夹/redkoldnote/docs/计算机网络/homework/HW4_231275036_朱晗#P15（子网分配问题）|子网分配问题p15]]
 - 同时图中可以读出[[#子网掩码(subnet mask)]] 前 `20 bit` 是 1，所以 `n=20`
 
 
@@ -340,7 +340,7 @@ $$
 
 这里要注意：路径毒化不会一直持续，且，**是针对到达某一个点的路径的特殊通告** 。（即不影响其他情形，比如如果是到别的点而不是 `X`）如果路径恢复，就会更新实际的跳数。收到邻居推送的合适的数值，也会更新。
 
-对于毒化逆转的深入理解，可以看这道题[[HW5_231275036_朱晗#P11|路径毒性逆转]]
+对于毒化逆转的深入理解，可以看这道题[[未命名文件夹/redkoldnote/docs/计算机网络/homework/HW5_231275036_朱晗#P11|路径毒性逆转]]
 
 
 
@@ -440,7 +440,7 @@ graph TD;
 - iBGP:
 	- BGP sessions between **border routers and other routers** within the same AS 
 	- Distribute **externally learned routes internally**
-对于[[HW5_231275036_朱晗#P14|题目：路由选择协议：从哪学到？]]，
+对于[[未命名文件夹/redkoldnote/docs/计算机网络/homework/HW5_231275036_朱晗#P14|题目：路由选择协议：从哪学到？]]，
 - IGP: “Interior Gateway Protocol” = Intradomain routing protocol 
 - Provide internal reachability
 -  E.g., OSPF, RIP

@@ -1,5 +1,5 @@
 实验五要完成路由器转发实验。
-回顾知识：[[网络层 Network Layer]]
+回顾知识：[[未命名文件夹/redkoldnote/docs/计算机网络/Notes/网络层 Network Layer]]
 
 ## 重要数据结构
 ### 路由表

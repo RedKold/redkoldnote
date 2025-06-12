@@ -468,13 +468,13 @@ To enhance wireless reliability, 4-frame exchange may be used
 
 # 校验方法
 ## 奇偶校验
-包括单校验和二维奇偶校验，参考这个题目 [[HW6_231275036_朱晗#P2]]
+包括单校验和二维奇偶校验，参考这个题目 [[未命名文件夹/redkoldnote/docs/计算机网络/homework/HW6_231275036_朱晗#P2]]
 - 单校验只能侦测错误，不能改正
 - 二维奇偶校验可以改正一个错，发现最多两个错。
 
 
 ## 因特网校验和（Internet checksum）
-在 UDP 协议中介绍过 [[运输层 Transport Layer#UDP CheckSum|UDP Checksum]]
+在 UDP 协议中介绍过 [[vault/redkoldnote/docs/计算机网络/Notes/运输层 Transport Layer#UDP CheckSum|UDP Checksum]]
 
 ### 流程
 一系列 $d$ 比特数据被当作一个 $k$ 比特整数的序列处理。
@@ -484,7 +484,7 @@ To enhance wireless reliability, 4-frame exchange may be used
 
 ## 循环冗余检测 (Cyclic Redundancy Check, CRC)
 
-[[HW6_231275036_朱晗#P5 CRC|CRC习题]]
+[[未命名文件夹/redkoldnote/docs/计算机网络/homework/HW6_231275036_朱晗#P5 CRC|CRC习题]]
 
 ### 基本概念
 CRC 编码也叫做 **多项式编码**（polynomial code）

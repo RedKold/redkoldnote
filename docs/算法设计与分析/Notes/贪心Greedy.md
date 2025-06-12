@@ -65,13 +65,13 @@ for traditional Graph Traversal strategy such as DFS and BFS, there are cases th
 	- hard circle checking
 ### Merging Two Vertices
 Merging $v_1$ and $v_{2}$ , is delete $v_2$ and give all the neighbors of $v_2$ to $v_{1}$
-[[图]]
+[[vault/redkoldnote/docs/算法设计与分析/Notes/图]]
 
-[[图]]
+[[vault/redkoldnote/docs/算法设计与分析/Notes/图]]
 
 
 # Dijkstra 算法
-可以阅读这里的笔记 [[图#单源最短路径 (`Dijkstra` 算法)|`Dijkstra`算法]]
+可以阅读这里的笔记 [[vault/redkoldnote/docs/算法设计与分析/Notes/图#单源最短路径 (`Dijkstra` 算法)|`Dijkstra`算法]]
 # 再论贪心算法
 **基本要素**：
 - **贪心选择性质**：
