@@ -36,7 +36,7 @@
 	- Master node "invites" slave nodes to transmit in turn.
 		- (主仆关系，一个个排队发)
 	- Typically used with "dump" salve devices
-- ![[in-turn-master-slave.png]]
+- ![in-turn-master-slave|400](https://kold.oss-cn-shanghai.aliyuncs.com/in-turn-master-slave.png)
 ### **Token passing**（令牌传递协议）
 - **Control token** （令牌）passed from one node to next sequentially
 - Token to message
@@ -100,7 +100,7 @@ $$
 - Frame may be damaged by noise or collision
 	- *Another* station transmitting at the **same time**
 	- Any overlap (重叠的) of frames causes collision
-![[ALOHA.png]]
+![ALOHA|400](https://kold.oss-cn-shanghai.aliyuncs.com/ALOHA.png)
 
  ### CSMA
  - Carrier sense multiple access (载波侦听多路访问)
@@ -211,7 +211,7 @@ U=\frac{{\text{Time for frame transmission}}}{\text{total time for a frame}}
 $$
 对于长帧 (Large frame) 和短帧 (Small frame) 我们的考虑有区别：因为 `transmission time` 和 `propagation time` 的对比不一样
 
-![[point-to-point-link.png]]
+![point-to-point-link|400](https://kold.oss-cn-shanghai.aliyuncs.com/point-to-point-link.png)
 ### Max Utilization
 - 给出参数和假设
 	- $1$: normalized frame transmission time
@@ -234,7 +234,7 @@ $$
 	- Unique, hard-coded in the adapter when it is bulit
 
 ## Address Configuration
-![[Pasted image 20250428113535.png]]
+![Pasted image 20250428113535|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250428113535.png)
 
 ## Discovery
 一个主机（Host）诞生时候，只知道他的 MAC 地址
@@ -270,7 +270,7 @@ $$
 	
 	- 存储转发 LAN 的帧（**Store， forward** LAN frames）
 	- Switch（route）functions needed
-- ![[bridge-operation.png]]
+- ![bridge-operation|400](https://kold.oss-cn-shanghai.aliyuncs.com/bridge-operation.png)
 ## Requirements of a Bridge
 - **Store and Forward** （存储转发）
 	- 读在一个 LAN 上传输的帧
@@ -283,7 +283,7 @@ $$
 	- Bridges do not need to be configured
 ## Bridge Protocol Architecture
 靠 MAC 地址来做路由
-![[bridge-protocols-architecture.png]]
+![bridge-protocols-architecture|400](https://kold.oss-cn-shanghai.aliyuncs.com/bridge-protocols-architecture.png)
 - Relaying MAC frames
 
 ## Broadcast Ethernet
@@ -297,12 +297,12 @@ $$
 - Ethernet is "plug-n-play"
 即插即用
 ### 在 extended LANs 中做广播
-![[extended-LANs.png]]
+![extended-LANs|400](https://kold.oss-cn-shanghai.aliyuncs.com/extended-LANs.png)
 ### Broadcast Storm 广播风暴
 #### 问题介绍
 
 但是当出现 **环**(loop)（比如上图）之后，就会出现 "**broadcast storm**"，即相同报文被反复广播
-![[broadcast storm.png]]
+![broadcast storm|400](https://kold.oss-cn-shanghai.aliyuncs.com/broadcast%20storm.png)
 
 #### 解决方案-生成树算法
 构造一个生成树算法。因为生成树无环
@@ -324,27 +324,35 @@ $$
 
 每个点通过报文 (Messages) 来沟通实现算法，报文结构如下
 - `Messages(Y,d,X)`
-	- From node `X`
 	- Proposing `Y` as the root
-	- And advertising a distance d to `Y`
+		- 推举 `Y` 作为根
+	- `X`：**标志报文的来源**，From `X`
+	- `d`
+		- And advertising a distance `d` to `Y`
+		- 是广告一个距离 `d`，告诉 `Y`
 
 基本逻辑是这样：
 - 路由器将选择有最小的 `identifier`（MAC address）的节点作为根 `root`
 - Each node determines if a link is **on its shortest path to the root**;  exclude it from the tree if not
+	- 每个节点都决定，一个链接是否在它到达根的 **最短路径上**，如果不是，则'去掉'这条链接。
 
 
 具体步骤：
 - 最初，每个节点都“推举”自己是根（之后再根据各自的 MAC 更新）（proposes itself as the root）
 	- Switch `X` announces `(X,0,X)` to its neighbors
-	- Nodes update their view of the root
-		- Upon receiving `(Y,d,Z)` from `Z`, check `Y` 's id
-		- **if `Y` 's id < current root: set root = `Y`**
-	- Nodes compute their distance from the root
-		- Add 1 to the shortest distance received from a neighbor
-	- If root or shortest distance to it **changed**, send neighbors updated message `(Y, d+1, X)`
+- Nodes update their view of the root
+- 节点开始更新它们对于根的看法（及分布式的比对，最后得到 mac 地址最小的作为根）
+	- Upon receiving `(Y,d,Z)` from `Z`, check `Y` 's id
+	- **if `Y` 's id < current root: set root = `Y`**
+- Nodes compute their distance from the root
+- 节点计算它们到根的距离
+	- Add 1 to the shortest distance received from a neighbor
+		- 具体来说是从邻居的 `d` 再加上 1
+- If root or shortest distance to it **changed**, send neighbors updated message `(Y, d+1, X)`
+- 如果根，或到达根的最短距离发生变化，就发送
 
 运行图：
-![[broadcast-ST.png]]
+![broadcast-ST|400](https://kold.oss-cn-shanghai.aliyuncs.com/broadcast-ST.png)
 
 ## 地址学习 (Address Learning)
 - Each bridge maintains a forwarding **database**
@@ -403,7 +411,7 @@ $$
 	- Protals (Routers) provide access to Internet
 - **Distribution System(DS)**：
 	- A system used to interconnect a set of **BSSs** and integrated LANs to create an **ESS**
-![[IEEE-802-11.png|500]]
+![IEEE-802-11|500|400](https://kold.oss-cn-shanghai.aliyuncs.com/IEEE-802-11.png)
 
 ### 信道-关联
 每个无线站点在能够接受/发送之前，必须和一个 AP 相关联。安装 AP
@@ -431,7 +439,7 @@ To enhance wireless reliability, 4-frame exchange may be used
 	- AP 收到 RTS，广播一个 CTS 帧作为响应
 	- 发送方收到 CTS，知道可以发送
 	- 其他站点知道，此事件不要给这个 AP 发送
-	![[RTS-CTS-CA.png]]
+	![RTS-CTS-CA|400](https://kold.oss-cn-shanghai.aliyuncs.com/RTS-CTS-CA.png)
 ### MAC 协议（Media Access Control）
 选择了一种**随机接入协议**
 - **带碰撞避免的 CSMA**(CSMA with collision avoidance) **CSMA/CA**
@@ -443,7 +451,7 @@ To enhance wireless reliability, 4-frame exchange may be used
 
 
 流程图：
-![[MAC-timing.png]] 
+![MAC-timing|400](https://kold.oss-cn-shanghai.aliyuncs.com/MAC-timing.png) 
 
 
 # 校验方法
@@ -509,7 +517,7 @@ $$
 - ~~越说越糊涂~~**深化理解**：
 	- **其实取个倒数**也是一样的，因为在模 2 算数中，**谁除谁都是一个做异或罢了**
 
-![[CRC-calc.png]]
+![CRC-calc|400](https://kold.oss-cn-shanghai.aliyuncs.com/CRC-calc.png)
 
 --- 
 
