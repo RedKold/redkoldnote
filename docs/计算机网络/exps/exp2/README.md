@@ -21,10 +21,10 @@ TCP 状态转移图：
 ![[Pasted image 20250315203829.png|700]]
 
 
-**连接过程**：四次握手（Hi）
+**连接过程**：三次握手（Hi）
 
 断开连接：四次挥手（Bye）
-![[Pasted image 20250317115811.png|400]]
+![Pasted image 20250317115811|400|500](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250317115811.png)
 ```c
 void tcp_process(struct tcp_sock *tsk, struct tcp_cb *cb, char *packet);
 ```

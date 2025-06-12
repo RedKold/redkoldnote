@@ -4,24 +4,27 @@
 无连接的：connectioness 
 	 不区分 IP，只关心 port
 - UDP is connectionless
-## **什么是 Socket？**
+## **什么是 Socket？**（套接字）
 **socket**: software abstraction for an application process to exchange network messages with the (transport layer in the) operating system
+- **应用程序进程**与操作系统中的传输层之间交换网络消息的**接口**。
+    
+- 传输层地址
 
 - Transport layer addressing
 	- <HostIp, Port>, called a socket
 - Two important types of sockets
-	- UDP socket: TYPE is SOCK_DGRAM
-	- TCP socket: TYPE is SOCK_STREAM
+	- **UDP socket: TYPE is SOCK_DGRAM**
+	- **TCP socket: TYPE is SOCK_STREAM**
 - 对 TCP 服务器的 socket 理解：TCP 需要两个 socket, 一个是欢迎套接字（握手），一个是连接套接字。
 
 **Connection less**
 
 **Connection-oriented demux**
 4 个要素确定一条链接：
-- Host IP address 
-- Host port
-- Client IP address 
-- Host port
+- **Host IP address** 
+- **Host port**
+- **Client IP address** 
+- **Host port**
 - Multiplexing (Mux)
 	Gather and combining data chunks at the source host from different applications and delivering to the network layer
 
@@ -97,9 +100,19 @@ b.
 TCP 最快。因为 TCP 没有“傻傻”的等待 2 的正确传输，而是先缓存处理后面的，再冗余 ack 后快速进入重传。
 
 
-## UDP CheckSum
-Check sum：将 segment 各位加和，获得一个 16 位的 binary numbers，并取反。
-然后，接收端也进行加和，与 Checksum 相加如果等于 0，就说明校验成功。（上一步取反是为了这一步比较“校验和相同”能比较简单.）
+## UDP
+- 尽力而为、**无连接**
+**UDP**是无连接的，**非可靠的**
+- UDP is a **minimalist transport protocol**
+
+- 实现了传输层最基础的复用-分用功能
+    - 复用：在发送端将来自多个应用层的数据流整合到单一的网络连接中（使用端口进行区分）
+    - 分用：复用的逆过程，在接受度那根据头部信息中的杜娜口号，将数据包发送到正确的应用程序
+### UDP Checksum
+**Check sum**：将 segment 各位加和，获得一个 1**6 位的 binary numbers，并取反。**
+然后，接收端也进行加和，与 Checksum 相加如果等于 0，就说明校验成功。
+- **TIP**
+- **（上一步取反是为了这一步比较“校验和相同”能比较简单.）**
 
 ## TCP
 Transmission Control Protocol
@@ -136,13 +149,22 @@ Receiver: get packet seqno: 600,700... But send ACK 500
 
 Introduce: *fast retransmit*
 ---
-Duplicate ACKs trigger early retransmission
+Duplicate ACKs trigger **early retransmission**
 
 具体而言：如果 sender hasn' t received an ACK by timeout, *retransmit hte first packet in the window*
 
+## [[#NEW Reno (Jacobson's Reno)|New Reno]]
+关于 New Reno 的详细知识，可以看链接。这是目前默认使用的 TCP 拥塞控制方法。（你实验也做过，见 [[vault/redkoldnote/docs/计算机网络/exps/exp4/README|README]]）
+
+
+# 数据网络中的拥塞控制
+## 随机早期丢弃（RED）
+## 公平队列
+
 ## 掉包问题解决与拥塞控制
 ![reno-and-cubic](https://i-blog.csdnimg.cn/blog_migrate/a33e4db6ae1788d7174213f74c631672.png)
-### 总体概括
+## 从 TCP-Tahoe 到 TCP-newReno
+TCP-Tahoe 
 - TCP-Tahoe
 	- `CWND=1 on 3 dupACKs`
 - TCP-Reno
@@ -159,13 +181,13 @@ Duplicate ACKs trigger early retransmission
 `Else: CWND =CWND+1/CWND`
 
 `dupACK`：计算掉包。一旦发生三次重复 `ACK` 认为是丢包
-`if dupACKcount >= 3 ` 进行快重传(fast transmission)
+`if dupACKcount >= 3 ` 进行快重传 (fast transmission)
 
 *Problem*: 这个算法在偶发丢包时候，**性能**特别差
 
 ### NEW Reno (Jacobson's Reno)
 #必考
-在 Reno 基础上 利用快恢复算法(fast recovery)
+在 Reno 基础上利用快恢复算法 (fast recovery)
 - 慢启动
 - 拥塞避免阶段 
 - 快重传
@@ -208,12 +230,11 @@ $$
 ### 2. `cwnd`（拥塞窗口）
 
 ![TCP window as a functions](https://github.com/YangXiaoHei/Networking/blob/master/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E8%87%AA%E9%A1%B6%E5%90%91%E4%B8%8B/03%20%E8%BF%90%E8%BE%93%E5%B1%82/images/p40.png?raw=true)
-#### 
-(1) 定义
+#### 1 定义
 
 `cwnd` 是发送端维护的一个动态值，用来实现拥塞控制策略，反映网络当前的承载能力。`cwnd` 的值会随着网络状态动态变化，以下是它的变化机制：
 
-#### (2) 增长机制
+#### 2 增长机制
 
 - **慢启动（Slow Start）**：
     - 初始时，`cwnd` 通常较小（例如 1 个 MSS，最大分段大小）。
@@ -230,7 +251,7 @@ $cwnd \leftarrow cwnd + MSS$
 
  $\text{cwnd}\leftarrow \text{cwnd}+ \frac{\text{MSS}^2}{\text{cwnd}}$
 
-#### (3) 缩减机制
+#### 3 缩减机制
 
 - **丢包或超时**：
     - 如果检测到丢包（通过超时或收到重复 ACK），认为网络可能拥塞，减小 `cwnd`：
@@ -264,6 +285,7 @@ $cwnd \leftarrow cwnd + MSS$
 | **窗口大小** | 初始值小，逐渐增长         | 初始值较大，随接收能力变化 |
 
 两者共同作用，发送端发送的数据量受两者的最小值限制：
+
 $$
 \text{实际窗口大小} = \min(\text{cwnd}, \text{rwnd})
 $$
@@ -278,38 +300,38 @@ $$
 
 传输速率如何调整？一个想法是按平均的公式来，即 ==equation based troughput==
 
-## 路由器辅助-拥塞控制(Router-Assisted Congestion Control)
-之前我们提到的拥塞控制，都是端到端的(end to end) 在一些更 local 的场景（自有服务器中心），路由器可以参与
+## 路由器辅助-拥塞控制 (Router-Assisted Congestion Control)
+之前我们提到的拥塞控制，都是端到端的 (end to end) 在一些更 local 的场景（自有服务器中心），路由器可以参与
 
 ## 公平性的讨论
 
 ## AIMD（Additive Increase Multiplicative Decrease）
-计算机网络中，AIMD（Additive Increase Multiplicative Decrease）算法是拥塞控制的核心机制之一（如TCP的拥塞避免阶段）。其名称中的**乘性减（Multiplicative Decrease, MD）**和**加性增（Additive Increase, AI）**分别代表以下含义：
+计算机网络中，AIMD（Additive Increase Multiplicative Decrease）算法是拥塞控制的核心机制之一（如 TCP 的拥塞避免阶段）。其名称中的**乘性减（Multiplicative Decrease, MD）**和**加性增（Additive Increase, AI）**分别代表以下含义：
 
 ---
 
 ### 1. **乘性减（Multiplicative Decrease, MD）**
 
-- **定义**：当检测到网络拥塞（如丢包或延迟增加）时，发送方将拥塞窗口（Congestion Window, `cwnd`）**乘以一个系数（通常为0.5）**，即窗口大小**减半**。
+- **定义**：当检测到网络拥塞（如丢包或延迟增加）时，发送方将拥塞窗口（Congestion Window, `cwnd`）**乘以一个系数（通常为 0.5）**，即窗口大小**减半**。
     
     - 公式：`cwnd = cwnd × β` （一般β=0.5）
         
 - **目的**：快速减少发送速率，以缓解网络拥塞。乘性减的“激进”响应能迅速降低网络负载。
     
-- **示例**：若当前`cwnd=16`个报文段，检测到拥塞后直接降至`cwnd=8`。
+- **示例**：若当前 `cwnd=16` 个报文段，检测到拥塞后直接降至 `cwnd=8`。
     
 
 ---
 
 ### 2. **加性增（Additive Increase, AI）**
 
-- **定义**：在未检测到拥塞时，发送方每经过一个RTT（往返时间）或每收到一个ACK，将`cwnd`**线性增加一个固定值**（通常为1 MSS）。
+- **定义**：在未检测到拥塞时，发送方每经过一个 RTT（往返时间）或每收到一个 ACK，将 `cwnd`**线性增加一个固定值**（通常为 1 MSS）。
     
     - 公式：`cwnd = cwnd + α` （一般α=1 MSS）
         
 - **目的**：缓慢探测可用带宽，避免窗口增长过快导致再次拥塞。
     
-- **示例**：若当前`cwnd=8`，经过一个RTT后增至`cwnd=9`，下一个RTT增至`cwnd=10`。
+- **示例**：若当前 `cwnd=8`，经过一个 RTT 后增至 `cwnd=9`，下一个 RTT 增至 `cwnd=10`。
     
 
 ---
@@ -318,8 +340,8 @@ $$
 
 |行为|触发条件|变化方式|目标|
 |---|---|---|---|
-|**乘性减（MD）**|检测到拥塞时|窗口×系数（如0.5）|快速缓解拥塞|
-|**加性增（AI）**|无拥塞时|窗口+固定值（如1）|渐进占用空闲带宽|
+|**乘性减（MD）**|检测到拥塞时|窗口×系数（如 0.5）|快速缓解拥塞|
+|**加性增（AI）**|无拥塞时|窗口+固定值（如 1）|渐进占用空闲带宽|
 
 ---
 
@@ -330,10 +352,6 @@ $$
 - **加性增**：避免过于激进的增长，实现公平性和稳定性（多个流竞争时收敛到公平分配）。
 
 Max-Min 公平性
-
-# 数据网络中的拥塞控制
-## 随机早期丢弃（RED）
-## 公平队列
 
 
 

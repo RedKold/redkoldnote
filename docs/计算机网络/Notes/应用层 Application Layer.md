@@ -1,3 +1,6 @@
+---
+本科课程: 计算机网络
+---
 ### 应用层复习框架
 
 ---
@@ -85,7 +88,7 @@
 - **SMTP协议与 POP3协议**
     - SMTP（Simple Mail Transfer Protocol）：邮件发送协议。
     - POP3（Post Office Protocol 3）：邮件接收协议。
-- **SMTP**
+- **SMTP**（Simple Mail Transfer Protocol）
 	- 传输简单文字信息
 	- 基于 TCP，端口 25 port
 	- 直接传输
@@ -115,23 +118,50 @@
 	- From (must)
 	- To (must)
 	- Subject (optional)
+- **IMAP**(Internet Mail Access Protocol)
+	- **Manipulation of stored msgs on server**
+- **邮件系统的组成部分**
+	- User Agent
+		- 组成、编辑、读电子邮件
+		- e.g. Eudora, Outlook, Foxmail, Netscape Messenger
+	- Outgoing, incoming mail messages stored on **server**
+
 ---
 
 #### **5. WWW（万维网）**
 
 - **WWW的概念与组成结构**
-    - 概念：通过超文本传输协议（HTTP）访问的分布式信息系统。
-    - 组成：Web客户端、Web服务器、Web浏览器。
+    - 概念：通过超文本传输协议（HTTP）访问的**分布式信息系统。**
+    - 组成：**Web客户端、Web服务器、Web浏览器。**
+    - **WWW**本质
+	    - 由许多互连的文档（称为“页面”）组成的 **分布式数据库**，每一个事物都是一个资源，通过 URL 进行获取和访问
 - **HTTP协议**
-    - 特点：无状态协议，支持 GET、POST 等方法。
+    - 特点：**无状态协议**
+	    - 所谓 stateless，就是每个客户端请求和服务器的响应都被 **独立的处理**，服务器不保存先前请求的状态
+	    - **优点**：故障处理更容易；服务器能够处理更高速率的请求；请求的顺序对服务器来说不重要
+	    - **缺点**：某些应用程序需要保持持久状态
+    - 支持 GET、POST 等方法。
     - HTTP/1.1、HTTP/2、HTTP/3 的主要改进。
 - **Web缓存**（Cookie）
     - 定义：在客户端或代理服务器上缓存 Web 资源以提高访问速度。
     - 机制：缓存控制、过期时间等。
+    - **问题**：隐私泄露
 - **CDN（内容分发网络）**
     - 定义：通过分布式服务器网络优化内容交付。
     - 优势：降低延迟、提高访问速度。
-        
+- **效率**
+	-  网页上有很多 object，图片等各种信息，早期 http**一次一个**，效率很低
+    - 办法：**同时**发送多个请求；一个 TCP**传输更多信息**
+    - 小文件延时（传输时间忽略）Tip 一个 RTT 是一个来回
+    - 逐个获取 **2 nRTT**
+    - 并发获取（m 个并发连接）**2[n/m]RTT**
+    - 持久连接（一个 TCP 一次获取一个，HTTP 1.1 引入）**(n+1) RTT**
+    - 流水线传输（一个连接，一次全部获取） **2 RTT**
+    - 流水线传输与持久连接：首次 **2 RTT**，之后 **RTT**
+    - 大文件延时（忽略 RTT）
+    - 逐个获取**nF/B**
+    - 并发获取 **[n/m]F/B**（前提是多个 TCP 时总带宽增加）
+    - 流水线传输和/或持久连接**nF/B**
 
 
 
