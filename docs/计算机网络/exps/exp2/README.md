@@ -1,11 +1,11 @@
-![[Pasted image 20250319114138.png]]
+![Pasted image 20250319114138|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250319114138.png)
 在 LISTEN 的状态处理中，创建子 socket,  并设置其成员**parent** 为服务端的 socket
 - Parent 用于管理父 sock 和子 sock，在 accept 中很好用，它界定了监听的总 sock 和具体处理请求的 sock 关系
 
 !! Listen 发生在 Tcp 已经收到了... 之后！状态转移不是让你转移到 LISTEN！
 这部分建立子 sock 已经做了
 建立子 sock 完成 2025年3月19日20:39:29.
-![[ec36ae64f123a6022a4059c19a91a300.png]]
+![ec36ae64f123a6022a4059c19a91a300|400](https://kold.oss-cn-shanghai.aliyuncs.com/ec36ae64f123a6022a4059c19a91a300.png)
 # TCP state machine
 ## 阻塞与唤醒
 - `Connect`：发送 `SYN` 包后 `sleep_on()`，收到 `SYN|ACK` 后被 `wake_up()`
@@ -18,7 +18,7 @@ TCP 状态转移图：
 对于**被动连接（服务器端）**，调用 listen 后，socket 的状态会从 TCP_CLOSED 转到 TCP_LISTEN；
 
  **而对于主动连接（客户端）**，调用 connect 后，socket 的状态会从 TCP_CLOSED 转到 TCP_SYN_SENT。这两种状态转移分别代表服务器等待连接和客户端主动发起连接的过程。
-![[Pasted image 20250315203829.png|700]]
+![Pasted image 20250315203829|700|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250315203829.png)
 
 
 **连接过程**：三次握手（Hi）
@@ -167,7 +167,7 @@ void handle_tcp_packet(char *packet, struct iphdr *ip, struct tcphdr *tcp)
 1. 输入 sudo python3 tcp_topo.py 来运行
 	1. 这一步发现报错：Terminal 说我的 scripts 文件无法运行，需要 `chmod +x $script_name` 来运行，经过一番调试可以进入 mininet.
 	2. 关于 [How to Make Script Executable in Linux | chmod Command - GeeksforGeeks](https://www.geeksforgeeks.org/chmod-command-linux/) 的知识可以看这个网站。
-2. ![[Pasted image 20250316154838.png|500]] 成功进入 mininet
+2. ![Pasted image 20250316154838|500|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250316154838.png) 成功进入 mininet
 3. 运行终端命令：脚本文件，遇到 Linux 和 windows 换行符不兼容问题：
 	1. /bin/bash^M: bad interpreter: No such file or directory（windows 换行符^M 被识别错误）
 	2. 解决方案：查找 [newline - Bash script – "/bin/bash^M: bad interpreter: No such file or directory" - Stack Overflow](https://stackoverflow.com/questions/14219092/bash-script-bin-bashm-bad-interpreter-no-such-file-or-directory) 得到解决。具体解决方案为在终端输入：
@@ -191,9 +191,9 @@ sudo mnexec -a 26831 ./tcp_stack client 10.0.0.1 10001
 ```
 这个测试是测试链接的建立：
 - 在 h1 节点:
-- ![[Pasted image 20250316164312.png|500]]
+- ![Pasted image 20250316164312|500|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250316164312.png)
 - 在 h2 节点：
-- ![[Pasted image 20250316164337.png|500]] 可以发现 client 的 ip 没有理想的设置：
+- ![Pasted image 20250316164337|500|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250316164337.png) 可以发现 client 的 ip 没有理想的设置：
 	- 定位到是 tcp_sock_connect 的问题，将其改为：
 `IP` 地址获得方法
 
@@ -207,12 +207,12 @@ sudo mnexec -a 26831 ./tcp_stack client 10.0.0.1 10001
 Port 用 ntohs (network to host short)
 
 ### 预期结果
-![[Pasted image 20250319002255.png]]
+![Pasted image 20250319002255|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250319002255.png)
 
 ---
 ### -BUG：
 
-![[Pasted image 20250319214929.png]]
+![Pasted image 20250319214929|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250319214929.png)
 新的 socket 没有和客户端正确建立联系。准确的说，new_tsk 可以正常给 client 发包，但是 client 还是发给了监听服务器.
 **思路：** 在 tcp_process 中路由到正确的 tsk，具体而言：先在 established_table中查找，再在 listen_table中查找
 具体 tcp_sock.c 中实现了struct tcp_sock *tcp_sock_lookup(struct tcp_cb *cb)可以用
@@ -315,7 +315,7 @@ server:
 2025年3月21日19:14:19 完成了基本信息收发 echo!!!!!
 
 manage with sleep and wake
-![[Pasted image 20250321201020.png]]
+![Pasted image 20250321201020|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250321201020.png)
 
 
 > [!note] 
@@ -358,9 +358,9 @@ h1 tcpdump -i h1-eth0 -s0 -U -w ./packetcaught/dump_py2c01_loss.pcap &
 c socket 回显
 可以看到**连接**可以正常唤醒，但是 `client`  ESTABLISHED 之后似乎没有正常的发送 ACK
 
-![[Pasted image 20250323000957.png]]
+![Pasted image 20250323000957|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250323000957.png)
 
-![[Pasted image 20250323001911.png]] ![[Pasted image 20250323005151.png]] ^[异常抓包：Ack 异常]
+![Pasted image 20250323001911|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250323001911.png) ![Pasted image 20250323005151|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250323005151.png) ^[异常抓包：Ack 异常]
 
 **修改办法**: 在 `tcp_process` 函数中，根据 `cb->seq` 动态更新序列号
 
@@ -376,15 +376,15 @@ c socket 回显
 现在处理包偏移量不对的问题。经检查 `tcp_send_packet` 函数的逻辑，其传入参数 `packet` 应该初始化大小为：`ETHER_HDR_SIZE + TCP_BASE_HDR_SIZE + IP_BASE_HDR_SIZE;`
 
 解决这个问题和偏移量设置后，发现 `send` 数据终于正常设置了
-![[Pasted image 20250323170554.png]]
+![Pasted image 20250323170554|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250323170554.png)
 现在问题是：由于 client 的休眠，所以其必须在进入休眠循环前接收到信息，否则 `sleep(1)` 是一个太长的时间，会导致 server超时重传 `Retransmission`
 
-![[Pasted image 20250323215829.png]] 
+![Pasted image 20250323215829|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250323215829.png) 
 代码发送之后，立刻去读，这样是读不到的，但是又进入了下一个循环，sleep 了 1 秒，就导致了矛盾。
 
 
 在 `read` 中添加了检查为空时 `sleep_on(tsk->wait_recv)` 逻辑，不会出现合并数据包的情况，
-![[Pasted image 20250324103442.png]]
+![Pasted image 20250324103442|400](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250324103442.png)
 但是仍有超时问题要解决.
 
 > [!success] 通过更改 `read` 和 `write` 的休眠逻辑 超时问题已经解决！
