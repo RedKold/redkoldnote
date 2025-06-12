@@ -389,27 +389,32 @@ $$
 # 无线网络
 
 ## 无线链路和网络特征
-无限链路有许多独特的特点。
+
+无线链路有许多独特的特点。
 - **递减的信号强度**，也叫做 **路径损耗**（pass loss）
 - **来自其他源的干扰**，在同一频段发送的电波源将相互干扰。
 - **多路径传播**，电磁波的一部分受地面和物体反射，在发送方和接收方走了不同长度的路径，就出现**多径传播**（multipath propagation）
+- **半双工**，无法同时发送和接受（自干扰问题难以解决）
+	- 不适用 CSMA/CD
 
 一些通信的衡量。
 
-### SNR 和 **BER**
+### 评估指标 SNR 和 **BER**
 - **SNR**: (Signal-to-Noise Ratio, SNR) 信噪比。度量单位通常为分贝。
-- **BER**：（Bit Error Rate）
+- **BER**：（Bit Error Rate）比特出错率
 ## 802.11无线局域网体系结构
 - 基本构件：基本服务及（Basic Service Set, BSS）
 
-- **接入点**（Access Point, AP）
+- **接入点**（Access Point, AP）**
 	- **即中央基站**（base station）
 - **Extended Service Set(ESS)**
+	- **拓展服务集**
 	- Multiple BSSs interconnected by **Distribution System (DS)**
 	- *DS* can be a switch, wired network, or wireless network
-	- An ESS appears as a single logical LAN
+	- An **ESS** appears as a single logical LAN
 	- Protals (Routers) provide access to Internet
 - **Distribution System(DS)**：
+	- 分布系统。用于连接不同的 BSS
 	- A system used to interconnect a set of **BSSs** and integrated LANs to create an **ESS**
 ![IEEE-802-11|500|400](https://kold.oss-cn-shanghai.aliyuncs.com/IEEE-802-11.png)
 
@@ -426,8 +431,15 @@ $$
 2. CTS
 3. DATA
 4. ACK
-**为了解决隐藏终端问题**：
 
+### 隐藏终端问题
+#必考 
+
+- **什么是隐藏终端？**![image.png|200](https://kold.oss-cn-shanghai.aliyuncs.com/20250612152903.png)
+
+	- 无线网多设备连接
+	- A、C 可能不知道对方的存在，同时向 B 发出信息，**导致冲突干扰**
+- **解决**：应用 4-Frame-Exchange
 To enhance wireless reliability, 4-frame exchange may be used
 -  Source issues a **Request to Send (RTS)** frame to destination 
 - Destination responds with **Clear to Send (CTS)** （允许发送）
