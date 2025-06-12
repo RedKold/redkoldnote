@@ -258,8 +258,20 @@ NAT 也起到了一个 **防火墙** 的作用。外界的攻击很难直接攻�
 ## Rounting 路由
 这部分是典型的**图问题**：网络中有很多节点，网络连接有代价，即权值。这自然涉及到最优化网络通信代价——如何设计通信路径即设计路由的方法。
 Dijkstra 算法和 B-F 最短路径算法广泛应用
+
+- AS（自治系统）
+	- **AS** 是 **Autonomous System**（自治系统）的缩写，在计算机网络中，指的是在一个单一管理实体（如 ISP、企业或大学）下的一组路由器和 IP 网络，它们使用相同的路由策略对外表现为一个单一的网络实体。
+- 我们分 AS 内部和 AS 之间讨论。
+	- AS 内部：IGP 
+		- Interior Gateway Protocol
+		- e.g. RIP, OSFP
+	- AS 之间：EGP
+		- 
+
+
+
 ### IGP
-**IGP**是
+**IGP**（Interior Gateway Protocol）：用于**自治系统内部的路由信息交换**，例如 OSPF、RIP 等。
 - IGP
 	- **RIP**（Routing Information Protocol）1 st Generation _动态路由协议_
 		- 信息使用：**Distance Vector** (DV) 距离向量
@@ -269,7 +281,7 @@ Dijkstra 算法和 B-F 最短路径算法广泛应用
 		- 算法：Dijkstra
 		- OSPF正是使用SPF算法(即 Dijkstra)来计算最短路径树。它使用“Cost”作为路由度量。使用链路状态数据库 **（LSDB）** 用来保存当前网络拓扑结构，路由器上属于同一区域的链路状态数据库是相同的（属于多个区域的路由器会为每个区域维护一份链路状态数据库）。
 		- ![SPF-tree|500](https://kold.oss-cn-shanghai.aliyuncs.com/SPF-tree.png)
-#### RIP vs OSFP
+#### RIP vs OSPF
 - RIP
 	- 配置简单，适用于小型网络（小于 15 跳）
 	- 可分布式实现
@@ -363,7 +375,7 @@ BGP（边界网关协议）通过一种机制称为**AS路径属性（AS Path At
     
     - 当一个BGP路由器接收到某条路由信息时，它会检查该路由的AS路径属性。
         
-    - 如果AS路径中包含本地AS的编号，就意味着发生了路由循环，因为这表明该路由已经从本地AS传播出去，又回到了本地AS。
+    - 如果**AS路径中包含本地AS的编号，就意味着发生了路由循环**，因为这表明该路由已经从本地AS传播出去，又回到了本地AS。
         
 
 ---

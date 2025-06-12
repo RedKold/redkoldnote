@@ -59,10 +59,11 @@
 
 
 ##### 加密和解密
-- 欧拉定理
-$(M^{e}\bmod N)^{d}\bmod N=M^{ed}\bmod N=M(\bmod N)$
+- 原理 **欧拉定理**
+	$(M^{e}\bmod N)^{d}\bmod N=M^{ed}\bmod N=M(\bmod N)$
+	
 - 加密 (Encryption)
-	- Use public-key  $(e,N)$ to encrypt message block $M<N$
+	- Use public-key  $(e,N)$ to encrypt **message block** $M<N$
 	- $C=M^{e}(\bmod N)$
 	- Send only $C$
 - 解密 (Decryption)
