@@ -1064,7 +1064,12 @@ Print the Maximum value
 - **测试方法**
 	- 根据测试用例对代码测试
 
-
+## 测试用例
+**是一个四元组**
+- 输入数据
+- 前置条件
+- 测试步骤
+- 预期输出
 ## 白盒测试技术
 - **设计测试用例思想**
 	- 基于程序内部的执行流程来设计测试用例
@@ -1111,7 +1116,23 @@ Print the Maximum value
 - **用例设计**
 	- 等价分类法
 		- 根据不同的属性划分有效等价类和无效等价类，然后不断设计用例直到覆盖所有
+		- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250612113803.png)
+
 	- 边界值分析法
 	- 决策表法
+		- 通过对问题设计一个决策表来设计
+		- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250612113918.png)
+
 	- 因果图法
+		- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250612115514.png)
+		- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250612115609.png)
+
 - 黑盒测试用例的开发可以与软件实现并行进行， 能够缩短软件开发周期
+
+
+## 基于大模型生成测试用例
+
+## 测试体系
+- 单元测试
+- 集成测试
+- 确认测试
