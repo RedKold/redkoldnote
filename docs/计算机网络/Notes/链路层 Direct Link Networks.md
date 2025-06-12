@@ -146,22 +146,19 @@ $$
 	如果两个节点同时开始传输，发生碰撞后，如果等待同一个时间开始重传，将持续碰撞。**所以选择随机量**
 
 ##### 最小帧长
-由于 CSMA 要求在传输 datagram 的同时检测冲突，所以这就对我们传输的帧大小有一定要求，**即我们传输的帧不能太小，以至于在其传输完毕之前，我们来不及检测到链路冲突**
+由于 CSMA 要求在传输 datagram 的同时检测冲突，所以这就对我们传输的帧大小有一定要求，**即我们传输的帧不能太小，以至于在其传输(transport)完毕之前，我们来不及检测到链路冲突（即链路上传播遇到了冲突，但是我们已经传完了来不及触发重传等处理机制）**
 
 -  为了确保发送设备有足够的时间检测碰撞，帧的长度必须大于信号传播一圈的时间（RTT，Round Trip Time）。
 - **信号传播速度和距离**：
-    - 以太网最大网段长度为500米，每个网段之间可以通过中继器连接，总长度不超过5个网段（大约2500米）。电信号在铜线中的传播速度约为光速的 2/32/32/3，即 $\approx 2\times10^{8} 米/秒。$
+    - 以太网最大网段长度为500米，每个网段之间可以通过中继器连接，总长度不超过5个网段（大约2500米）。电信号在铜线中的传播速度约为光速的 `2/3`，即 $\approx 2\times10^{8} 米/秒。$
 - **以太网的传输速率**：
-    
-    - 经典以太网速率为10 Mbps，发送1比特需要 110×106\frac{1}{10 \times 10^6}10×1061​ 秒，发送一个字节需要 810×106\frac{8}{10 \times 10^6}10×1068​ 秒。
-        
+    - 经典以太网速率为10 Mbps，发送1比特需要 `1/10*10^6` 秒
 - **计算最小帧长**：
-    
-    - 假设信号需要传播最远距离（2500米），往返时间 tRTT≈2×25002×108=25μst_{\text{RTT}} \approx \frac{2 \times 2500}{2 \times 10^8} = 25 \mu stRTT​≈2×1082×2500​=25μs。
-        
+    - 假设信号需要传播最远距离（2500米），往返时间 $t_{RTT} \approx \frac{2\times 2500}{2\times 10 ^8}=25\mu s$
     - 在此时间内，网络设备至少需要发送的数据量为：
-        
-        最小帧长度=25μs×10×106=250比特=31.25字节\text{最小帧长度} = 25 \mu s \times 10 \times 10^6 = 250 \text{比特} = 31.25 \text{字节}最小帧长度=25μs×10×106=250比特=31.25字节
+$$
+最小帧长度=25\mu s\times 10 \times 10^{6}=250bit=31.25byte
+$$
     - 为了简化规范，IEEE 802.3标准规定，以太网最小帧长为64字节（包括帧头和帧尾），其中有效载荷为46字节，帧头为18字节。
 
 ---
@@ -301,7 +298,7 @@ $$
 即插即用
 ### 在 extended LANs 中做广播
 ![[extended-LANs.png]]
-### Broadcast Storm
+### Broadcast Storm 广播风暴
 #### 问题介绍
 
 但是当出现 **环**(loop)（比如上图）之后，就会出现 "**broadcast storm**"，即相同报文被反复广播
@@ -310,10 +307,10 @@ $$
 #### 解决方案-生成树算法
 构造一个生成树算法。因为生成树无环
 具体而言，算法有两个角度
-- Pick a root
+- Pick a root （选择根，即最小路径的终点）
 	- Destination to which shortest paths go
 	- Pick the one with the smallest identifier (`MAC addr.`) 
-- Compute shortest paths to the root 
+- Compute shortest paths to the root （计算最小路径）
 	- **No shortest path can have a cycle** 
 	- Only keep the links on shortest-paths 
 	- **Break ties** in some way (so we only keep one shortest path from each node) 
