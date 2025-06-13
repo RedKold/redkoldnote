@@ -135,7 +135,11 @@
 
 **解答**
 - 依次看就行了。
-- 前 8 bytes 都是以太网头部
+- 前 `6+6+2=14` bytes 都是以太网头部
 	- 包括 Address 和 type
-- `c5 c1 5e 28`:version
-- ``
+	- `type`: `0800`，IP 类型
+- version
+	- 第一个字节，4bit，版本为 4
+- 定位到 Source Address，到 `0a 02 80 64`
+	- 
+- Dst address `40 aa 62 20`
