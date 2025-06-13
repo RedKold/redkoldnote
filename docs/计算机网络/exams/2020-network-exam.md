@@ -118,12 +118,12 @@
 
 #### （3 ）假设 `G` 访问了一个 Web 主页，`H` 用抓包工具抓到该 HTTP 请求对应的数据包。下面所示为 G 进行 Web 请求的 1 个以太网帧前 80 个字节的 16 进制以及 ASCII 码内容。请填写
 
-	- G 的 IP 地址为：
-	- G 所访问的网站的 IP 地址为
-	- G 的 MAC 地址为
-	- G 的默认网关的 MAC 地址为
-	- 该IP 包的载荷长度为
-	- 该IP 包的 TTL 为
+- G 的 IP 地址为：
+- G 所访问的网站的 IP 地址为
+- G 的 MAC 地址为
+- G 的默认网关的 MAC 地址为
+- 该IP 包的载荷长度为
+- 该IP 包的 TTL 为
 
 ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250613150442.png)
 
@@ -131,3 +131,11 @@
 ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250613151012.png)
 
 ![Pasted image 20250402104503|500](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250402104503.png)
+
+
+**解答**
+- 依次看就行了。
+- 前 8 bytes 都是以太网头部
+	- 包括 Address 和 type
+- `c5 c1 5e 28`:version
+- ``
