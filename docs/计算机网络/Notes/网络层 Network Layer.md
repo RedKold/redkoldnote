@@ -108,7 +108,7 @@ Ques:
 Router discards incoming packets when **buffer is full**
 - using ICMP
 ### IP Packet Structure
-#### Header
+#### IP Header
 #必考
 ![Pasted image 20250402104503|500](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250402104503.png)
 IP 头动态部分

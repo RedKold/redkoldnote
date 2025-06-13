@@ -90,14 +90,45 @@
 	- A 传输 D，S1 学习了 A 的 LAN 地址，广播这个包。
 	- S3 收到这个包，学习了 A 的 LAN 地址，广播这个包，
 	- S2 收到这个包，学习了 A 的 LAN 地址，广播
-		- E 收到 1st 包，是 S2 广播的 A->D 的包
+		- ==***E 收到 1st 包，是 S2 广播的 A->D 的包***==
 		- D 收到包。
-		- R 学习 A 的地址
+		- R 学习 A 的地址，广播
+		- S4 学习 A 的地址
 - D 到 A
 	- D 发送包
-	- S2 学习 D 的 LAN，转发
-	- S3 知道
+	- S2 学习 D 的 LAN，广播
+		- ==**E 收到 2nd 包，是 S2 广播的 D ->A**==
+	- S3 学习 D 的 LAN
+	- R 学习 D 的 LAN
+	- S4 学习 D 的 LAN
+	- S1 学习 D 的 LAN
+	- A 收到
+- 同理
+- B->G
+	- E 收到广播的B 到 G 的包。
+	- `S1,S2,S3,R,S4` 均学习 B 的 LAN
+- G 到 B
+	- ==E 收到广播的 G 到 B 的包==
+- A 到 H
+	- ==E 收到广播的 A 到 H 的包==
+- H 到 A
+	- 由于 A 的地址 S3已经知道，所以 S3 不会再广播这个包（洪泛），所以 E 收不到这个包。
 
 
 
+	#### （3 ）假设 `G` 访问了一个 Web 主页，`H` 用抓包工具抓到该 HTTP 请求对应的数据包。下面所示为 G 进行 Web 请求的 1 个以太网帧前 80 个字节的 16 进制以及 ASCII 码内容。请填写
 
+	- G 的 IP 地址为：
+	- G 所访问的网站的 IP 地址为
+	- G 的 MAC 地址为
+	- G 的默认网关的 MAC 地址为
+	- 该IP 包的载荷长度为
+	- 该IP 包的 TTL 为
+
+![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250613150442.png)
+
+注：以太网帧格式和 IP 首部格式如下
+
+
+![Pasted image 20250402104503|500](https://kold.oss-cn-shanghai.aliyuncs.com/Pasted%20image%2020250402104503.png)
+IP
