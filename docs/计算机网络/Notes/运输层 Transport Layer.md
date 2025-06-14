@@ -336,8 +336,20 @@ $$
 ## 路由器辅助-拥塞控制 (Router-Assisted Congestion Control)
 之前我们提到的拥塞控制，都是端到端的 (end to end) 在一些更 local 的场景（自有服务器中心），路由器可以参与
 
-## 公平性的讨论
+## 公平性的讨论（最大最小公平性, Max-Min Fairness）
+#必考 
+- **Max-Min 公平性**
+	- **最大最小公平性（Max-Min Fairness**）是一种在资源分配问题中常用的公平性原则，尤其在计算机网络的带宽分配或多用户系统的资源调度中。其核心思想是尽可能**优先满足对资源需求较小的用户**，同时在保证公平的情况下，逐步分配剩余资源。、
+	- **顾名思义**
+		- 最大化了最小分配。**即系统中资源分配最少得用户也获得了最大的可能资源**
+		- 解决了“饿死问题“，避免某些用户长期无法获得资源
 
+- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250614151929.png)
+- 
+
+
+
+---
 ## AIMD（Additive Increase Multiplicative Decrease）
 计算机网络中，AIMD（Additive Increase Multiplicative Decrease）算法是拥塞控制的核心机制之一（如 TCP 的拥塞避免阶段）。其名称中的**乘性减（Multiplicative Decrease, MD）**和**加性增（Additive Increase, AI）**分别代表以下含义：
 
@@ -384,7 +396,7 @@ $$
     
 - **加性增**：避免过于激进的增长，实现公平性和稳定性（多个流竞争时收敛到公平分配）。
 
-Max-Min 公平性
+
 
 
 
