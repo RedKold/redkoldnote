@@ -73,10 +73,19 @@ It decides which packets can sender send.
 
 - Resending packets: 2 canonical **approaches**
 	-  **Go-Back-N(GBN)**
+		- Sender 发送最多 $n$ 个 una 的 packets
+		- Receiver 只接受有序的包
+			- discard out-of-order packets
+		- Sender 为第一个显式的 ACK（`A+1`）设置计时器。
+			- 如果超时了，重传 `A+1,...,A+n`
 		- 回退 N 帧，只要不是正确按序接受，就重传上一个正常之后的所有。
+			- 
 	- **Selective Repeat(SR)（选择重传）**
 		- 累计确认。每个帧都有自己的计时器，一个帧超时只重传那一个帧。
-		- Receiver: 确认
+		- Receiver: 确认第 $k+1$ 个 packet 被正确接收
+		- Sender: 只重传第 $k$ 个包（超时了）
+		- 非常高效，但是比较复杂
+			- **需要对每一个包都维护计时器**
 Many variants that differ in implementation details
 
 ### 停止-等待协议 (stop-and-wait)
