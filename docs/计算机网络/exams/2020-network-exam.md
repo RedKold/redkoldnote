@@ -378,4 +378,19 @@ BGP 协议运行过程，当进入一个新的 AS 之后，会将其独特的标
 ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250614161245.png)
 
 
-- D
+- D 点 cwnd 减半，说明收到了多个 dupACK 而侦测到丢包。
+	- 快重传/快恢复
+- F 点发生了严重丢包事件（超时）
+	- 结束拥塞避免阶段，进入慢启动重启阶段
+
+#### （4）TCP 协议要对 RTT 值进行估算。假设 `Estimated RTT` 初始值为 `100ms`，$\alpha=0.25$，获得 4 个测量样本 `SampleRTT` 分别为 `106ms,80ms,120ms,102ms`，计算得到更新的 `Estimate RTT`
+
+公式：
+$$
+\text{Estimated RTT}=(1-\alpha)\text{Old Estimated RTT}+\alpha \times \text{Sample RTT}
+$$
+
+`EstimatedRTT_1=0.75*100+0.25*106=101.5`
+`EstimatedRTT_2=0.75*101.5+0.25*80=96.125`
+`EStimatedRTT_3=0.75*96.125+0.25*120=102.09375`
+`EstimatedRTT_4=0.75*102.09375+0.25`
