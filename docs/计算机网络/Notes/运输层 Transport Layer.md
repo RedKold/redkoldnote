@@ -75,36 +75,49 @@ It decides which packets can sender send.
 	-  **Go-Back-N(GBN)**
 		- 回退 N 帧，只要不是正确按序接受，就重传上一个正常之后的所有。
 	- **Selective Repeat(SR)（选择重传）**
+		- 累计确认。每个帧都有自己的计时器，一个帧超时只重传那一个帧。
+		- Receiver: 确认
 Many variants that differ in implementation details
 
+### 停止-等待协议 (stop-and-wait)
+- 又称为 **单帧滑动窗口**
+- 当发送窗口 `snd_wnd` 和接收窗口 `rwnd` 的大小固定为 1 的时候，滑动窗口协议退化为停止等待协议
+- **无差错情况**：
+	- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250614144310.png)
+- **有差错情况**
+	- 发送一个帧，会保存它的副本。
+	- **超时计时器的应用**
+	- 丢包触发重传。
+	- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250614144646.png)
 #### example
 提供一个 example
-比较 GBN、SR 和 TCP（无延时的 ACK）。假设对所有 3 个协议的超时值足够长，使得 5 个连续的数据报文段及其对应的 ACK 能够分别由接收主机（主机 B）和发送主机（主机 A）收到（如果在信道中无丢失）。假设主机 A 向主机 B 发送 5 个数据报文段，并且第二个报文段（从 A 发送）丢失。最后，所有 5 个数据报文段已经被主机 B 正确接收。
+> 
+	比较 GBN、SR 和 TCP（无延时的 ACK）。假设对所有 3 个协议的超时值足够长，使得 5 个连续的数据报文段及其对应的 ACK 能够分别由接收主机（主机 B）和发送主机（主机 A）收到（如果在信道中无丢失）。假设主机 A 向主机 B 发送 5 个数据报文段，并且第二个报文段（从 A 发送）丢失。最后，所有 5 个数据报文段已经被主机 B 正确接收。
 
  a. 主机 A 总共发送了多少报文段和主机 B 总共发送了多少 ACK？它们的序号是什么？对所有 3 个协议回答这个问题。
 b. 如果对所有 3 个协议超时值比 5 RTT 长得多，则哪个协议在最短的时间间隔中成功地交付所有 5 个数据报文段？
 
 a.
 - GBN
-对于 GBN，其会重传异常之后的所有报文。
-所以 A 发送 1+4+4=9 个 segments
-B 正常接受 1，ack 1
-回复 3, 4, 5, ack 3, 4, 5
-重传的 2, 3, 4, 5，ack 2, 3, 4, 5
-总共 9 segments ; 8 ack
+	对于 GBN，其会重传异常之后的所有报文。
+	所以 A 发送 1+4+4=9 个 segments
+	B 正常接受 1，ack 1
+	回复 3, 4, 5, ack 3, 4, 5
+	重传的 2, 3, 4, 5，ack 2, 3, 4, 5
+	总共 9 segments ; 8 ack
 - SR
-第二个报文丢失后，接收方缓存 3, 4, 5，回传的 ACK 序号分别为 1 3 4 5，第一轮 4 个 ACK。
-第二轮发送方重传 2，接收方回传的 ACK 为 2，第二轮 1 个 ACK
+	第二个报文丢失后，接收方缓存 3, 4, 5，回传的 ACK 序号分别为 1 3 4 5，第一轮 4 个 ACK。
+	第二轮发送方重传 2，接收方回传的 ACK 为 2，第二轮 1 个 ACK
 
 总共 6 segments 5 ack
 - TCP
-第二个 segment 丢失后，接收方缓存 3, 4, 5，ack: 2, 2, 2, 2
-3 个冗余 ack，进入重传，发送方重传 2
-接收方处理排序后，回复 ack6 表示已完成整理。
+	第二个 segment 丢失后，接收方缓存 3, 4, 5，ack: 2, 2, 2, 2
+	3 个冗余 ack，进入重传，发送方重传 2
+	接收方处理排序后，回复 ack6 表示已完成整理。
 总共 6 segments  5 ack
 
 b.
-TCP 最快。因为 TCP 没有“傻傻”的等待 2 的正确传输，而是先缓存处理后面的，再冗余 ack 后快速进入重传。
+	TCP 最快。因为 TCP 没有“傻傻”的等待 2 的正确传输，而是先缓存处理后面的，再冗余 ack 后快速进入重传。
 
 
 ## UDP
@@ -171,16 +184,7 @@ Duplicate ACKs trigger **early retransmission**
 ## 掉包问题解决与拥塞控制
 ![reno-and-cubic](https://i-blog.csdnimg.cn/blog_migrate/a33e4db6ae1788d7174213f74c631672.png)
 
-### 停止-等待协议 (stop-and-wait)
-- 又称为 **单帧滑动窗口**
-- 当发送窗口 `snd_wnd` 和接收窗口 `rwnd` 的大小固定为 1 的时候，滑动窗口协议退化为停止等待协议
-- **无差错情况**：
-	- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250614144310.png)
-- **有差错情况**
-	- 发送一个帧，会保存它的副本。
-	- **超时计时器的应用**
-	- 丢包触发重传。
-	- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250614144646.png)
+
 
 
 ## 从 TCP-Tahoe 到 TCP-newReno
