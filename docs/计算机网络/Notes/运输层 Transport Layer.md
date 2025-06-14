@@ -56,22 +56,25 @@ Round-Trip-Time:
 ### Pipelining: increased utilization 
 ![[a0e859817c285cb7e429923a8f237af2_720.png]]
 
-### Sliding window
+## Sliding window（滑动窗口）
 #### What is sliding window
 It decides which packets can sender send.
 
 - **Window**=set of adjacent sequence numbers
 	- The size of the set is. The window size
-- General idea: send up to n packets at a time
+- General idea: **send up to `n` packets at a time**
 	- Sender can send packets in its window
 	- Receiver can accept packets in its window
 
-### Sliding window protocols
+### Sliding window protocols（滑动窗口协议）
+
+- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250614144817.png)
+
 
 - Resending packets: 2 canonical **approaches**
-	-  Go-Back-N(GBN)
+	-  **Go-Back-N(GBN)**
 		- 回退 N 帧，只要不是正确按序接受，就重传上一个正常之后的所有。
-	- Selective Repeat(SR)
+	- **Selective Repeat(SR)（选择重传）**
 Many variants that differ in implementation details
 
 #### example
@@ -167,6 +170,19 @@ Duplicate ACKs trigger **early retransmission**
 
 ## 掉包问题解决与拥塞控制
 ![reno-and-cubic](https://i-blog.csdnimg.cn/blog_migrate/a33e4db6ae1788d7174213f74c631672.png)
+
+### 停止-等待协议 (stop-and-wait)
+- 又称为 **单帧滑动窗口**
+- 当发送窗口 `snd_wnd` 和接收窗口 `rwnd` 的大小固定为 1 的时候，滑动窗口协议退化为停止等待协议
+- **无差错情况**：
+	- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250614144310.png)
+- **有差错情况**
+	- 发送一个帧，会保存它的副本。
+	- **超时计时器的应用**
+	- 丢包触发重传。
+	- ![image.png|400](https://kold.oss-cn-shanghai.aliyuncs.com/20250614144646.png)
+
+
 ## 从 TCP-Tahoe 到 TCP-newReno
 TCP-Tahoe 
 - TCP-Tahoe
