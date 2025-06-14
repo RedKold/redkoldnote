@@ -5,5 +5,4 @@
 /.github/.DS_Store
 ./**/.DS_Store
 
-/docs/数理基础/.DS_Store
-/docs/数理基础/概率论/.DS_Store
+**/*DS_Store
