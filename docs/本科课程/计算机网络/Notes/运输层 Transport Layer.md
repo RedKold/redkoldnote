@@ -186,7 +186,7 @@ Duplicate ACKs trigger **early retransmission**
 具体而言：如果 sender hasn' t received an ACK by timeout, *retransmit hte first packet in the window*
 
 ## [[#NEW Reno (Jacobson's Reno)|New Reno]]
-关于 New Reno 的详细知识，可以看链接。这是目前默认使用的 TCP 拥塞控制方法。（你实验也做过，见 [[vault/redkoldnote/docs/计算机网络/exps/exp4/README|README]]）
+关于 New Reno 的详细知识，可以看链接。这是目前默认使用的 TCP 拥塞控制方法。（你实验也做过，见 [[vault/redkoldnote/docs/本科课程/计算机网络/exps/exp4/README|README]]）
 
 
 # 数据网络中的拥塞控制

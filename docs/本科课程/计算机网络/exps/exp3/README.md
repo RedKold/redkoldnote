@@ -2,12 +2,12 @@
 本科课程: 计算机网络
 ---
 –# 实验目标
-本次实验在[实验二](vault/redkoldnote/docs/计算机网络/exps/exp2/README.md) 的基础上，完成：
+本次实验在[实验二](vault/redkoldnote/docs/本科课程/计算机网络/exps/exp2/README.md) 的基础上，完成：
 - 实现可靠传输机制
 - 在有丢包的网络拓扑上实现文件传输
 
 # 抓包调试
-看这里 [[vault/redkoldnote/docs/计算机网络/exps/exp2/README#抓包|README]]
+看这里 [[vault/redkoldnote/docs/本科课程/计算机网络/exps/exp2/README#抓包|README]]
 
 # 实验前的准备
 ## 代码文件准备

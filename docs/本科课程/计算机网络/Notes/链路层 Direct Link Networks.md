@@ -474,7 +474,7 @@ To enhance wireless reliability, 4-frame exchange may be used
 
 
 ## 因特网校验和（Internet checksum）
-在 UDP 协议中介绍过 [[vault/redkoldnote/docs/计算机网络/Notes/运输层 Transport Layer#UDP CheckSum|UDP Checksum]]
+在 UDP 协议中介绍过 [[vault/redkoldnote/docs/本科课程/计算机网络/Notes/运输层 Transport Layer#UDP CheckSum|UDP Checksum]]
 
 ### 流程
 一系列 $d$ 比特数据被当作一个 $k$ 比特整数的序列处理。
