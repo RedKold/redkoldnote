@@ -386,9 +386,11 @@ BGP 协议运行过程，当进入一个新的 AS 之后，会将其独特的标
 #### （4）TCP 协议要对 RTT 值进行估算。假设 `Estimated RTT` 初始值为 `100ms`，$\alpha=0.25$，获得 4 个测量样本 `SampleRTT` 分别为 `106ms,80ms,120ms,102ms`，计算得到更新的 `Estimate RTT`
 
 公式：
+
 $$
 \text{Estimated RTT}=(1-\alpha)\text{Old Estimated RTT}+\alpha \times \text{Sample RTT}
 $$
+
 
 `EstimatedRTT_1=0.75*100+0.25*106=101.5`
 `EstimatedRTT_2=0.75*101.5+0.25*80=96.125`
