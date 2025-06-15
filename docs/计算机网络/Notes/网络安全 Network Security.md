@@ -94,6 +94,7 @@
 	- Source impersonation / spoofing （伪造源）
 	- Message injection / modification （修改报文）s
 	- Message re-sequencing / replaying （重放攻击）
+
 ### Authentication Functions
 - Creating an **authenticator** which may involve functions of
 	- Sender / Message Text 
@@ -121,4 +122,7 @@
 	- Certificate for public key
 
 	之前提到的  **Middle Attack**，**Play Back**攻击，本质都是密钥分发过程存在很多漏洞。
+
+
+
 
