@@ -2,6 +2,21 @@ site_name: redkold-note
 
 theme:
     name: material
+    features:
+      - navigation.tabs
+      - navigation.top
+      - navigation.indexes
+      - navigation.sections
+      - navigation.instant
+      - navigation.tracking
+      - navigation.expand
+      - navigation.tabs.sticky
+      - navigation.tabs.sticky.scrollable
+      - navigation.tabs.sticky.scrollable.mobile
+      - content.code.select
+      - search.suggest
+      - search.share
+
     palette:
     #primary: blue grey
 
