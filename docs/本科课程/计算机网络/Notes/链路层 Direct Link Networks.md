@@ -274,16 +274,18 @@ $$
 ## Requirements of a Bridge
 - **Store and Forward** （存储转发）
 	- 读在一个 LAN 上传输的帧
+	- 先缓存这个帧，检查其正确性。
 	- 检查其 MAC 地址
 	- 选择性存储这些地址到其他 LANs (selectively store those address to other LANs)
 	- Using MAC protocol of second LAN, retransmit each frame
-- **Transparent**
+- **Transparent**（透明性）
 	- Stations are **unaware of presence of bridges**
+		- **不知道其他桥的存在**
 - **Plug-and-play, self-learning**（即插即用，自我学习）
 	- Bridges do not need to be configured
 ## Bridge Protocol Architecture
 靠 MAC 地址来做路由
-![bridge-protocols-architecture|400](https://kold.oss-cn-shanghai.aliyuncs.com/bridge-protocols-architecture.png)
+![bridge-protocols-architecture|500](https://kold.oss-cn-shanghai.aliyuncs.com/bridge-protocols-architecture.png)
 - Relaying MAC frames
 
 ## Broadcast Ethernet
@@ -468,7 +470,7 @@ To enhance wireless reliability, 4-frame exchange may be used
 
 # 校验方法
 ## 奇偶校验
-包括单校验和二维奇偶校验，参考这个题目 [[未命名文件夹/redkoldnote/docs/计算机网络/homework/HW6_231275036_朱晗#P2]]
+包括单校验和二维奇偶校验，参考这个题目 [[vault/redkoldnote/docs/计算机网络/homework/HW6_231275036_朱晗|HW6_231275036_朱晗]]
 - 单校验只能侦测错误，不能改正
 - 二维奇偶校验可以改正一个错，发现最多两个错。
 
