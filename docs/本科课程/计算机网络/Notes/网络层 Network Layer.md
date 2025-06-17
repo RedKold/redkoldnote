@@ -45,11 +45,12 @@ IP header 传输过程发生变化，但是 TCP header 和 data 保持不变。�
 
 ### output port functions
 ![output-port-functions|400|500](https://kold.oss-cn-shanghai.aliyuncs.com/output-port-functions.png)
-we will classify an IP packet based on a number of fields in the packet header, e.g.,
+we will classify an IP packet based on a **number of fields in the packet header**, e.g.,
 - Source/destination IP address(32 bits)
-- Source/destination TCP port number(16 bits)
+- Source/destination TCP port number(16 bits) ：`0~65535`
 - Type of service (TOS) bytes （8 bits）
 - Type of protocol (8 bits)
+	- ICMP? 
 
 ### Connecting inputs to ouputs
 - Transfer packet from input to output
@@ -77,14 +78,16 @@ Virtual Circuit：需要专用的资源，牺牲了用户来换取性能。
 ### Routing
 Host and routers maintain *routing tables*
 - indicate next router to which datagram should be sent 
-### Datagram Lifetime
+### Datagram Lifetime **数据报生命周期**
+
 mark datagram with *lifetime*, so it won' t live forever.
 Once lifetime expires, datagram is discarded instead of forwarded
+给每个 datagram 一个 TTL (Time To Live), 转发时候减少，**超时则删除**。
 
 ### Fragmentation and Re-assembly
 （切片和组装）
 Length of a packet exceeds the coming network’s **MTU (maximum transmission unit**
-one segment in its transmit may fragment and re-assemble.
+one segment in its transmit **may fragment and re-assemble.**
 Ques:
 - WHEN to fragment?
 	- Host – determine min of MTUs along the path 
@@ -153,7 +156,7 @@ Range 192.0.0.x to 223.255.255.x
 #### IP 的获取（DHCP）
 #必考 
 DHCP（Dynamic Host Configuration Protocol, DHCP）动态主机配置协议。
-- DHCP 允许主机自动获取（被分配）一个 IP 地址
+- **DHCP 允许主机自动获取（被分配）一个 IP 地址**
 - 即插即用能力（plug-and-play protocol）
 
 连接过程：DHCP 是一个 4 步骤的过程。
