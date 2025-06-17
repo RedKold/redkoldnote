@@ -117,7 +117,24 @@ Router discards incoming packets when **buffer is full**
 IP 头动态部分
 - **TTL：time to live 会更新。**
 - checksum：由于 TTL 更新，重新计算 checksum
+-  Total Length：ip 包头和 ip 内容的总长度（**不包括以太头**）
+- Time to Live：包的生存时间
+- Protocol： ipv4? ipv6?
+- 关于 Fragment 机制
+
+##### Fragment 机制和组装
+- ![image.png|600](https://kold.oss-cn-shanghai.aliyuncs.com/20250617233848.png)
+-    **Flags: 有 3bits**
+-     reserve bit: 未用
+-  DF (*D*on't Frag) bit = 0 代表可以做 fragmentation，DF bit = 1 代表不能做 fragmentation。
+-  MF (*M*ore Frag) bit= 0 代表该数据包是整个数据流里面最后一个包，MF bit = 1 代表还有**更多**被 fragment 的数据包
+-  Fragment Offset：该片偏移原始数据包开始处的位置。**偏移的字节数是该值乘以8。**
+	- 非尾部分片 datagram 的 `payload_len` 数据量都应该是 8 的整数倍。
+- [[2020-re-network-exam#五|例题：关于偏移量]]
+
+
 ### IP Addressing
+
 - IP address
 	- 32 bit global internet address for each interface (32 bit ，4 bytes)
 		- 采取 `点分十进制记法` (dotted-decemal notation )
