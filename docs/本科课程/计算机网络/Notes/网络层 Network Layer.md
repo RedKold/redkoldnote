@@ -160,15 +160,16 @@ DHCP（Dynamic Host Configuration Protocol, DHCP）动态主机配置协议。
 - 即插即用能力（plug-and-play protocol）
 
 连接过程：DHCP 是一个 4 步骤的过程。
-- DHCP 发现
+- DHCP 发现（discover）
 	- client 在 UDP 分组向端口 67 发送该发现报文。
-	- src: 0.0.0.0 dst: 0.0.0.0 (广播地址)
-- DHCP 提供
-	- 使用 DHCP offer message 做出响应。向该子网的所有节点广播（广播地址 255.255.255.255）
-- DHCP 请求
+	- src: `0.0.0.0` dst: `255.255.255.255` (广播地址)
+- DHCP 提供 (offer)
+	- 使用 DHCP offer message 做出响应。向该子网的所有节点广播（广播地址 `255.255.255.255`）
+- DHCP 请求 (request)
 	- 新到达的客户从一个或多个服务器中选择一个，并向选中的服务器提供用 DHCP 请求报文 (DHCP requset message) 进行响应，回显配置的参数。
 - DHCP ACK
 	- DHCP ACK 报文（DHCP ACK message）对 DHCP 请求报文进行响应，证实所要求的参数。
+	- 服务器应当检查 option 字段，如果不是自己该回复就回复 NAK
 
 ### IPv6
 #### header structure
@@ -188,7 +189,8 @@ DHCP（Dynamic Host Configuration Protocol, DHCP）动态主机配置协议。
 #### Transition from IPv4 to IPv6
 有两种推荐的方法：
 - Dual Stack – some routers with dual stack (IPv6, IPv4) can translate between formats 
-- Tunneling – IPv6 carried as payload in IPv4 datagram among IPv4 routers（以现有的 IPv4 设施传输 IPv6 数据报）IPv6隧道是通过将IPv6数据报封装在IPv4数据报中，利用现有的IPv4基础设施来传输IPv6流量。这种机制被称为**隧道封装**，IPv4网络在这种场景中只是作为传输介质，而不是直接的链路层协议。
+	- **双重协议栈**
+- Tunneling – IPv6 carried as payload in IPv4 datagram among IPv4 routers（以现有的 IPv4 设施传输 IPv6 数据报）IPv6隧道是通过将IPv6数据报封装在IPv4数据报中，利用现有的IPv4基础设施来传输IPv6流量。这种机制被称为**隧道封装**，IPv4网络在这种场景中只是作为传输介质，而**不是直接的链路层协议。**
 
 ### 网关
 
@@ -226,7 +228,7 @@ NAT 也起到了一个 **防火墙** 的作用。外界的攻击很难直接攻�
 #### 如果能抓包，如何确认 NAT 后的主机数量
 
 是一道很有意思的习题[[未命名文件夹/redkoldnote/docs/计算机网络/homework/HW4_231275036_朱晗#P19|显示NAT主机数量]]
-- 根本上来说，拿 BASIC NAT 举例，是因为 NAT 实现 NAT 系统中某个 IP 到对外的 IP 的转换是顺序进行的，所以其标识号（比如对外的端口）是顺序变化的。所以我们对于抓包找到最小的和最大的标识号就可以了。
+- 根本上来说，拿 BASIC NAT 举例，是因为 NAT 实现 NAT 系统中某个 IP 到对外的 IP 的转换是顺序进行的，所以其标识号（比如对外的端口）是顺序变化的。所以我们对于抓包找到最小的和最大的标识号就可以了。（或者找到所有按顺序排的，放到一个集合，数一数有多少个。）
 
 ## 子网 subnet
 - 一个子网（们）的例子
@@ -443,7 +445,7 @@ graph TD;
 - iBGP:
 	- BGP sessions between **border routers and other routers** within the same AS 
 	- Distribute **externally learned routes internally**
-对于[[未命名文件夹/redkoldnote/docs/计算机网络/homework/HW5_231275036_朱晗#P14|题目：路由选择协议：从哪学到？]]，
+对于[[vault/redkoldnote/docs/本科课程/计算机网络/homework/HW5_231275036_朱晗#P14|题目：路由选择协议：从哪学到？]]，
 - IGP: “Interior Gateway Protocol” = Intradomain routing protocol 
 - Provide internal reachability
--  E.g., OSPF, RIP
+-  E.g., `OSPF, RIP`
