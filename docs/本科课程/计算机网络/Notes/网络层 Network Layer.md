@@ -366,12 +366,21 @@ $$
 	- 例如下面这张图，解释了为什么毒性逆转在大于 3 个节点的情形可能失效。
 	- A 的 DV：
 		- C: 1, next hop C
-		- D
+		- D: 2, next hop C
+		- B: 1, next hop B
+	- B 的 DV
+		- C: 2 next hop A
+		- D: 3 next hop A
+		- A: 1 next hop A
+	- 故我们毒化，只会毒化 `A->D`。且
+	- 所以 `C` 仍然会选择 `B` 作为到达 `D` 的下一跳，A loop is formed again
 
 
 （这不会彻底解决 `count to infinity` 问题，三个节点以上的环的问题仍然存在）
 - Example
 - ![image.png|600](https://kold.oss-cn-shanghai.aliyuncs.com/20250618144048.png)
+- ![image.png|600](https://kold.oss-cn-shanghai.aliyuncs.com/20250618145015.png)
+
 
 这里要注意：路径毒化不会一直持续，且，**是针对到达某一个点的路径的特殊通告** 。（即不影响其他情形，比如如果是到**别的点**而不是 `X`）如果路径恢复，就会更新实际的跳数。收到邻居推送的合适的数值，也会更新。
 
