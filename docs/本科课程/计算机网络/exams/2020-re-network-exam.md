@@ -1,5 +1,7 @@
 # 2020 计网重修班
 
+
+
 ## 三
 ![image.png|600](https://kold.oss-cn-shanghai.aliyuncs.com/20250618105944.png)
 
@@ -51,6 +53,11 @@
 
 ---
 
+## 四
+![](https://kold.oss-cn-shanghai.aliyuncs.com/20250618152826.png)
+
+1. CSMA/CA
+	1. 发送之前
 ## 六
 ![image.png|600](https://kold.oss-cn-shanghai.aliyuncs.com/20250618112208.png)
 
