@@ -45,7 +45,13 @@
 		3. 发送 packet
 		4. 对方回复 ACK
 		5. 这样就能确定对方是否处于可以通信的状态，解决 hidden terminal 问题。
-	3. 
+	 3. 
+		 1. A 发送 B（此时 C 不能发送）time 1
+		 2. C 发送 D，B 回复 ACK 给 A time 2
+		 3. A 发送新包给 B，D 回复 ACK 给 C time 3
+		 4. C 发送新包给 D，B 回复 ACK 给 A time 4
+		 5. 循环....
+	根据此分析，最大速率为 `0.5 message/n time slot`
 
 ## 五
 ![image.png|600](https://kold.oss-cn-shanghai.aliyuncs.com/20250617233848.png)
