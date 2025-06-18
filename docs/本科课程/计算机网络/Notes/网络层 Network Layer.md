@@ -121,9 +121,13 @@ IP 头动态部分
 - Time to Live：包的生存时间
 - Protocol： ipv4? ipv6?
 - 关于 Fragment 机制
+	- 涉及到 `Identification, Flags, Fragment Offset`
 
 ##### Fragment 机制和组装
 - ![image.png|600](https://kold.oss-cn-shanghai.aliyuncs.com/20250617233848.png)
+- ID ![image.png|600](https://kold.oss-cn-shanghai.aliyuncs.com/20250618003452.png)
+	- 拆分出的值一样
+	- 关于  Identification 字段。该字段占 16 bit，IP 软件在存储器中维持一个计数器，每产生一个数据报，计数器就加1，并将此值赋给标识字段。但这个“标识”并不是序号，因为 IP 是无连接服务，因此数据报不存在按序接收的问题。那么该字段究竟有什么用？当一个数据报长度过长，超过网络 MTU 而需要分片时，则把标识字段的值复制到所有分片数据报中，最后在目的设备才能依据标志字段而正确的重组数据报，因此该字段可以唯一标识某个 IP 报文。
 -    **Flags: 有 3bits**
 -     reserve bit: 未用
 -  DF (*D*on't Frag) bit = 0 代表可以做 fragmentation，DF bit = 1 代表不能做 fragmentation。
