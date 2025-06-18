@@ -441,11 +441,11 @@ $$
 
 	- 无线网多设备连接
 	- A、C 可能不知道对方的存在，同时向 B 发出信息，**导致冲突干扰**
-- **解决**：应用 4-Frame-Exchange
+- **解决**：应用 **4-Frame-Exchange**
 To enhance wireless reliability, 4-frame exchange may be used
 -  Source issues a **Request to Send (RTS)** frame to destination 
 - Destination responds with **Clear to Send (CTS)** （允许发送）
-- After receiving **CTS**, source transmits data 
+- After receiving **CTS**, source transmits **DATA**
 - Destination responds with **ACK**
 整体流程是这样的：
 - 发送方要发送信息：
