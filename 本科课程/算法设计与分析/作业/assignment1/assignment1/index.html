@@ -1,0 +1,5389 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../../assignment2/">
+      
+      
+        <link rel="alternate" type="application/rss+xml" title="RSS feed" href="../../../../../feed_rss_created.xml">
+        <link rel="alternate" type="application/rss+xml" title="RSS feed of updated content" href="../../../../../feed_rss_updated.xml">
+      
+      <link rel="icon" href="../../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+    
+    
+      
+        <title>Chatper 1 Abstract Compute Model - redkold-note</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.342714a4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="#9B5DE5" data-md-color-accent="#FF477E">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#chatper-1-abstract-compute-model" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../../.." title="redkold-note" class="md-header__button md-logo" aria-label="redkold-note" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            redkold-note
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chatper 1 Abstract Compute Model
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="#9B5DE5" data-md-color-accent="#FF477E"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="#9B5DE5" data-md-color-accent="#FF477E"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  关于我
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../Why%20do%20you%20write/MAD%E6%94%B6%E9%9B%86%E5%AE%B6/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Why do you write
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../blog/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Blog
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../../../%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA/%E5%A4%9A%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E6%80%BB%E7%BB%93/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  数理基础
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../../%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  本科课程
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../../.." title="redkold-note" class="md-nav__button md-logo" aria-label="redkold-note" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    redkold-note
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    关于我
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Why do you write
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Why do you write
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Why%20do%20you%20write/MAD%E6%94%B6%E9%9B%86%E5%AE%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    MAD 收藏家
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Why%20do%20you%20write/latex%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%EF%BC%88%E8%87%AA%E7%94%A8%EF%BC%89/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    字体
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Why%20do%20you%20write/%E5%A5%87%E5%B7%A7%E8%AE%A1%E7%A8%8B%E8%BD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    奇巧计程车
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Why%20do%20you%20write/%E6%B2%A1%E8%83%BDGo%20Beyond%20-%20Moana%202%20%E7%AE%80%E8%AF%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    没能Go Beyond   Moana 2 简评
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../Why%20do%20you%20write/%E9%9F%B3%E4%B8%80%E4%BC%9A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    音一会歌词
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../../blog/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Blog
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Archive
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    数理基础
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            数理基础
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    概率论
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            概率论
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA/%E5%A4%9A%E7%BB%B4%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    二维r.v （联合）分布函数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA/%E5%A4%A7%E6%95%B0%E5%AE%9A%E5%BE%8B%E5%92%8C%E6%9E%81%E9%99%90%E5%AE%9A%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    大数定律 和 中心极限定理
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA/%E5%B8%B8%E7%94%A8%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E5%88%86%E5%B8%83%E7%B1%BB%E5%9E%8B%E6%80%BB%E7%BB%93/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    常见随机变量分布类型知识总结
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%8B%93%E5%B1%95%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    条件期望和重期望
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    概率的公理化定义
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA/%E6%A6%82%E7%8E%87%E8%AE%BA%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    拓展问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA/%E7%89%B9%E5%BE%81%E5%87%BD%E6%95%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    特征函数
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../../%E6%95%B0%E7%90%86%E5%9F%BA%E7%A1%80/%E6%A6%82%E7%8E%87%E8%AE%BA/%E9%9A%8F%E6%9C%BA%E5%8F%98%E9%87%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E7%89%B9%E5%BE%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    点此可以查看常用随机变量分布类型的方差期望
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    本科课程
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            本科课程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    算法设计与分析
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            算法设计与分析
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../%E7%AE%97%E6%B3%95%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    算法目录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_2" id="__nav_5_1_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Notes/Hashing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Hashing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Notes/NP%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    NP问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Notes/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92DP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    动态规划 DP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Notes/%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    图遍历问题
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Notes/%E5%B9%B6%E6%9F%A5%E9%9B%86-Union%20Find/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    并查集 Union Find
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Notes/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    排序算法
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Notes/%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A6%E9%97%AE%E9%A2%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    定义时间复杂度
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Notes/%E6%9F%A5%E6%89%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    对数时间查找
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Notes/%E6%A0%88%E5%92%8C%E9%98%9F%E5%88%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    栈和队列
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../Notes/%E8%B4%AA%E5%BF%83Greedy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Optimizing by Greedy
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_3" id="__nav_5_1_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    作业
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_1_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1_3">
+            <span class="md-nav__icon md-icon"></span>
+            作业
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1_3_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Assignment1
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_3_1" id="__nav_5_1_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5_1_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Chatper 1 Abstract Compute Model
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chatper 1 Abstract Compute Model
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 找中位数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 集合最小问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 集合最小问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 失败的例子
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 设计集合覆盖
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7 多项式计算
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8 整数相乘
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../assignment2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Assignment2
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_1_3_2" id="__nav_5_1_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment2/assignment2%20-%20%E6%8E%92%E5%BA%8F%E5%86%9B%E8%AE%AD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 4 分治排序
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_3_3" id="__nav_5_1_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assignment3
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment3/231275036%20%E6%9C%B1%E6%99%97%20%E4%BD%9C%E4%B8%9A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    要求
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_3_4" id="__nav_5_1_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assignment4
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment4/23175036%20%E6%9C%B1%E6%99%97%20%E4%BD%9C%E4%B8%9A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    作业名录 ：任选20题- 8.1, 8.3, 8.5, 8.7, 8.8, 8.9, 8.10, 8.11, 8.14, 8.15, 8.18, 8.19, 8.20, 8.22, 8.24, 8.28 - 9.1, 9.2, 9.3, 9.4, 9.5, 9.8, 9.10
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_3_5" id="__nav_5_1_3_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assignment5
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment5/231275036%20%E6%9C%B1%E6%99%97%20%E4%BD%9C%E4%B8%9A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    231275036 朱晗 作业5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment5/Drawing%202025-05-29%2011.25.27.excalidraw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Drawing 2025 05 29 11.25.27.excalidraw
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1_3_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_3_6" id="__nav_5_1_3_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assignment6
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment6/231275036%20%E6%9C%B1%E6%99%97%20%E4%BD%9C%E4%B8%9A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    231275036 朱晗 作业6
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment6/Drawing%202025-06-02%2010.37.47.excalidraw/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Drawing 2025 06 02 10.37.47.excalidraw
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_1_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1_3_7" id="__nav_5_1_3_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assignment7
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_1_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment7
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../assignment7/231275036%20%E6%9C%B1%E6%99%97%20%E4%BD%9C%E4%B8%9A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ProblemSet7 NPC
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            计算机网络
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_1" id="__nav_5_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Notes/%E5%A4%9A%E5%AA%92%E4%BD%93%20MultiMedia%20networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    多媒体 MultiMedia networking
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Notes/%E5%BA%94%E7%94%A8%E5%B1%82%20Application%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    应用层 Application Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Notes/%E7%9B%AE%E5%BD%95%E5%92%8C%E8%80%83%E8%AF%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    考试方式
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Notes/%E7%BB%AA%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    绪论
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Notes/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8%20Network%20Security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络安全 Network Security
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Notes/%E7%BD%91%E7%BB%9C%E5%B1%82%20Network%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    网络层 Network Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Notes/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    计算机网络
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Notes/%E8%BF%90%E8%BE%93%E5%B1%82%20Transport%20Layer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    运输层 Transport Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Notes/%E9%93%BE%E8%B7%AF%E5%B1%82%20Direct%20Link%20Networks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    链路层 Direct Link Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_2" id="__nav_5_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Exams
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Exams
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/exams/2020-network-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2020 network exam
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/exams/2020-re-network-exam/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    2020 计网重修班
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_3" id="__nav_5_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Exps
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Exps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_3_1" id="__nav_5_2_3_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Exp1
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Exp1
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/exps/exp1/GPT-Teacher/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    GPT Teacher
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/exps/exp2/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Exp2
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Exp2
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/exps/exp3/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Exp3
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Exp3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/exps/exp4/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Exp4
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Exp4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/exps/exp5/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Exp5
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_2_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Exp5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/exps/exp6/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Exp6
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_2_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            Exp6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/exps/exp7/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Exp7
+    
+  </span>
+  
+
+            </a>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_2_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Exp7
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2_4" id="__nav_5_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Homework
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Homework
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/homework/HW2_231275036_%E6%9C%B1%E6%99%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Chapter 2 Application Layer
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/homework/HW3_231275036_%E6%9C%B1%E6%99%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW3 231275036 朱晗
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/homework/HW4_231275036_%E6%9C%B1%E6%99%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    HW4 231275036 朱晗
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/homework/HW5_231275036_%E6%9C%B1%E6%99%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    题目集合 R4 ,R6,R10,P2,P3,P4,P5,P7, P11,P12,P13,P14,P17,P18
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/homework/HW6_231275036_%E6%9C%B1%E6%99%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    题目集合（Direct Link Networks:） R4,R5,R6,R8,P1,P2,P3,P5,P6,P8, P10,P11,P14,P15,P18,P19,P23,P24,P25,P26
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/homework/HW7_231275036_%E6%9C%B1%E6%99%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    题目集合
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/homework/csnet/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Csnet
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    金融机构运行和管理
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            金融机构运行和管理
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E6%9C%BA%E6%9E%84%E8%BF%90%E8%A1%8C%E5%92%8C%E7%AE%A1%E7%90%86/%E8%AF%BE%E7%A8%8B%E8%AE%B0%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3_2" id="__nav_5_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Group Discussion
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Group Discussion
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E6%9C%BA%E6%9E%84%E8%BF%90%E8%A1%8C%E5%92%8C%E7%AE%A1%E7%90%86/Group%20Discussion/1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    产业自金融实例及类型
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    金融经济学
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            金融经济学
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E7%BB%8F%E6%B5%8E%E5%AD%A6/%E9%87%8D%E7%82%B9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    重点
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E7%BB%8F%E6%B5%8E%E5%AD%A6/%E9%87%91%E8%9E%8D%E7%BB%8F%E6%B5%8E%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    金融经济学
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5" id="__nav_5_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    金融软件工程
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5">
+            <span class="md-nav__icon md-icon"></span>
+            金融软件工程
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E5%A4%8D%E4%B9%A0%E7%9B%AE%E5%BD%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    复习目录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8BNote/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    金融软件工程Note
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_3" id="__nav_5_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    SIAPs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            SIAPs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/SIAPs/SIAP/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    SIAP
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/SIAPs/homework2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Homework2
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/SIAPs/jrrg-231275036-%E6%9C%B1%E6%99%97-231275033-%E9%99%88%E4%BF%8A%E5%87%AF-231275019-%E6%AC%A7%E9%98%B3%E6%85%A7%E5%A9%B7-231275011-%E6%9D%A8%E6%83%A0%E6%96%87/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    需求文档
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/SIAPs/%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    接口文档
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/SIAPs/%E8%AE%BE%E8%AE%A1%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%A6%82%E4%BD%95%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    设计大模型如何用
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_4" id="__nav_5_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assignments
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_5_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Assignments
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_4_1" id="__nav_5_5_4_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assignment3
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_5_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment3
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/assignments/assignment3/Group01-%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3-20250401-v1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    目录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/assignments/assignment3/Group01-%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3-20250402/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    目录
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/assignments/assignment3/%E6%9C%AF%E8%AF%AD%E5%AE%9A%E4%B9%89/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    术语定义
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/assignments/assignment3/%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    需求文档
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_4_2" id="__nav_5_5_4_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assignment4
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_5_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment4
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/assignments/assignment4/jrrg-231275036-%E6%9C%B1%E6%99%97-231275033-%E9%99%88%E4%BF%8A%E5%87%AF-231275019-%E6%AC%A7%E9%98%B3%E6%85%A7%E5%A9%B7-231275011-%E6%9D%A8%E6%83%A0%E6%96%87-exp4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1. 架构设计
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_4_3" id="__nav_5_5_4_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assignment5
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_5_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment5
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/assignments/assignment5/jrrg-231275036-%E6%9C%B1%E6%99%97-231275033-%E9%99%88%E4%BF%8A%E5%87%AF-231275019-%E6%AC%A7%E9%98%B3%E6%85%A7%E5%A9%B7-231275011-%E6%9D%A8%E6%83%A0%E6%96%87-exp5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Jrrg 231275036 朱晗 231275033 陈俊凯 231275019 欧阳慧婷 231275011 杨惠文 exp5
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_5_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_5_4_4" id="__nav_5_5_4_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Assignment6
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_5_5_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_5_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Assignment6
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../%E9%87%91%E8%9E%8D%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/assignments/assignment6/report/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.2 找中位数
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.3 集合最小问题
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1.3 集合最小问题">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. 失败的例子
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. 设计集合覆盖
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#17" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.7 多项式计算
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#18" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.8 整数相乘
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#19" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.9
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#110" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.10
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="chatper-1-abstract-compute-model">Chatper 1 Abstract Compute Model<a class="headerlink" href="#chatper-1-abstract-compute-model" title="Permanent link">&para;</a></h1>
+<h2 id="12">1.2 找中位数<a class="headerlink" href="#12" title="Permanent link">&para;</a></h2>
+<ol>
+<li>设计算法找出中位数
+    <div class="highlight"><pre><span></span><code><span class="nb">int</span> <span class="n">FindMedian</span><span class="p">(</span><span class="nb">int</span> <span class="n">a</span><span class="p">,</span><span class="nb">int</span> <span class="n">b</span><span class="p">,</span><span class="nb">int</span> <span class="n">c</span><span class="p">){</span>
+    <span class="k">if</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span><span class="err">：</span>
+        <span class="n">swap</span><span class="p">(</span><span class="n">a</span><span class="p">,</span><span class="n">b</span><span class="p">)</span> <span class="c1">#让a,b,c形成升序, 现在 a一定小于b</span>
+    <span class="k">else</span> <span class="k">if</span> <span class="n">a</span><span class="o">&gt;</span><span class="n">c</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span> <span class="c1">#此时已经知道c&lt;a&lt;b</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">c</span><span class="o">&gt;</span><span class="n">b</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">b</span>
+        <span class="k">else</span> <span class="k">return</span> <span class="n">c</span>       
+<span class="p">}</span>
+</code></pre></div></li>
+<li>
+<p>最坏情况下：
+    需三次比较。
+平均意义：
+    共 abc,  acb, bac, bca, cab, cba 六种升序排列可能。
+    其中 2 次比较 return:  cab, cba
+        3 次比较  return: abc, acb, bac, bca
+$$
+Average=2\times \frac{2}{6}+3\times \frac{4}{6}=\frac{8}{3}
+$$ 
+3.
+最坏情况下至少需要 3 次比较。
+Proof:
+因为找到中位数，至少需要确定 3 个数的一种排列方式。而 3 个数的排列方式为 <span class="arithmatex">\(3! ={6}\)</span> 个，那么至少需要比较 <span class="arithmatex">\(3\)</span> 次才能形成 <span class="arithmatex">\(2^{3} =8\)</span> 的答案空间，由鸽笼原理之想要的排列至少要 3 次比较才能确定下来从而确定中位数. </p>
+</li>
+</ol>
+<h2 id="13">1.3 集合最小问题<a class="headerlink" href="#13" title="Permanent link">&para;</a></h2>
+<h3 id="1">1. 失败的例子<a class="headerlink" href="#1" title="Permanent link">&para;</a></h3>
+<p>可以考虑：
+$$
+U={ 1,2,3,4,5,6 }, S_{1}={ 1,2,3,4,5 }, S_{2}={ 1,2,3,4 }, S_{3}={ 1,2,3 },\dots , S_{m}={ 6 }
+$$
+此时该算法会贪心地依次选择 <span class="arithmatex">\(S_{1},S_{2},S_{3}...\)</span> ，但其实最优方案是 <strong>选择</strong> <span class="arithmatex">\(S_{1}\)</span> 和 <span class="arithmatex">\(S_{m}\)</span></p>
+<h3 id="2">2. 设计集合覆盖<a class="headerlink" href="#2" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">St</span><span class="o">=</span><span class="p">{}</span>
+<span class="k">for</span> <span class="nb">all</span> <span class="n">Si</span> <span class="ow">in</span> <span class="n">S</span><span class="p">,</span> <span class="n">do</span><span class="p">:</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">St</span> <span class="n">UNION</span> <span class="n">Si</span> <span class="o">!=</span> <span class="n">U</span><span class="p">):</span>
+        <span class="n">St</span><span class="o">=</span> <span class="n">Si</span> <span class="n">UNION</span> <span class="n">St</span> <span class="c1">#add a new set</span>
+    <span class="k">else</span><span class="p">:</span><span class="c1">#cover found</span>
+        <span class="k">return</span> <span class="n">St</span>
+</code></pre></div>
+<h3 id="3">3.<a class="headerlink" href="#3" title="Permanent link">&para;</a></h3>
+<p>并不是。它只是简单的从头遍历依次选择，（1）中失败的例子仍然可以使我的算法无效。</p>
+<h2 id="17">1.7 多项式计算<a class="headerlink" href="#17" title="Permanent link">&para;</a></h2>
+<p>用数学归纳法。
+Basis: 显然对于单项多项式 <span class="arithmatex">\(P(x)\)</span>，算法正确
+H: 假设 <span class="arithmatex">\(k=n-1\)</span> ，算法能正确计算 <span class="arithmatex">\(P(x)\)</span> 的值，即能成功计算 <span class="arithmatex">\(P'(x)=a_{n}x^{n-1}+a_{n-1}x^{n-2}+\cdots+a_{1}\)</span>
+I.S: 需要证明 <span class="arithmatex">\(n=k\)</span>，也可以正确计算
+$$
+\begin{align}
+P(x)&amp;=a_{n}x<sup>{n}+a_{n-1}x</sup>{n-1}+\dots+a_{1}+a_{0} \
+&amp;=P'(x)·x+a_{0}
+\end{align}
+$$
+根据算法过程，其完成的迭代运算正确，故该算法正确。</p>
+<h2 id="18">1.8 整数相乘<a class="headerlink" href="#18" title="Permanent link">&para;</a></h2>
+<p><strong>首先证明 recursive equatation</strong>
+$$
+\begin{align}
+z=kc+z\bmod c \
+k=\left\lfloor  \frac{z}{c}  \right\rfloor  \
+c\times \left\lfloor  \frac{z}{c}  \right\rfloor =z-z\bmod c \
+\end{align}
+$$
+移项即证算法中的递归式</p>
+<p>证明算法终止：
+该算法的传参规模的 <span class="arithmatex">\(z\)</span> 项是强递减的，且最终会递归到 <span class="arithmatex">\(0\)</span>，故算法会终止。并给出正确答案。</p>
+<h2 id="19">1.9<a class="headerlink" href="#19" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+Pr(r=i)=
+\begin{cases}
+\frac{1}{n}\left( 1\leq i\leq \frac{n}{4} \right) \\
+\frac{2}{n}\left( \frac{n}{4} &lt;i\leq \frac{n}{2}\right) \\
+\frac{1}{2n}\left( \frac{n}{2}&lt;i\leq n \right)
+\end{cases}
+$$ 
+假设 n 是 4 的倍数。
+算法的输入 r 为 1 到 n 之间的自然数。
+求数学期望：denotes the counts of operatoins as $X$
+$$
+E(X)=\frac{1}{n} \cdot 10\cdot\left( \frac{n}{4} \right)+\frac{2}{n}\cdot 20\cdot \left( \frac{n}{2}-\frac{n}{4} \right)+ \frac{1}{2n} \cdot 30\cdot\left( \frac{3n}{4}-\frac{n}{2} \right) +\frac{1}{2n}n\cdot \left( n-\frac{3n}{4} \right)
+$$
+可以得到
+$$
+E(X)=2.5+10+\frac{15}{4}+\frac{1}{8}n=16.25+\frac{1}{8}n
+\]</div>
+<h2 id="110">1.10<a class="headerlink" href="#110" title="Permanent link">&para;</a></h2>
+<p>判断：用于判断数组中是否有两个位置不同的元素相等
+1. 最坏时间复杂度：
+    1. 假设数组没有相同元素，则将完整遍历数组，时间复杂度为 <span class="arithmatex">\(O(n^{2})\)</span>
+2. 平均复杂度：
+    1. 数组中有且仅有两个元素相等，该遍历构成这样一个 <span class="arithmatex">\(n-1 \times n-1\)</span> 遍历矩阵图 ：
+$$
+\begin{align}
+0,1,2,3,\dots ,n-1 \
+1,2,3,\dots n-1 \
+2,3,\dots, n-1 \
+\dots
+\end{align}
+$$
+若输入中 <span class="arithmatex">\(A[i]==A[j]\)</span>，则算法在第 <span class="arithmatex">\(i\)</span> 行第 <span class="arithmatex">\(j\)</span> 列终止。矩阵共有 <span class="arithmatex">\(\sum_{i=0}^{n-2}(i+1)\)</span> 个可能终止的位置，知道在这 <span class="arithmatex">\(\frac{n(n-1)}{2}\)</span> 个位置终止概率相等
+比较次数：
+$$
+\frac{2}{n(n-1)}\times \sum_{k=1}^{n(n-1)/2}k=\frac{1}{2}+\frac{n(n-1)}{4}
+$$
+复杂度 <span class="arithmatex">\(O(n^{2})\)</span></p>
+<ol>
+<li>考虑在 (i, j) 算法没有终止：那么说明前 i 个数字各不相同，且第 i 个数字和 i+1 到 j 的数字没有重复。这个事件的概率为（不太会写）</li>
+</ol>
+<h1 id="chapter-2-math-and-algorithm">Chapter 2 Math and Algorithm<a class="headerlink" href="#chapter-2-math-and-algorithm" title="Permanent link">&para;</a></h1>
+<h2 id="22">2.2<a class="headerlink" href="#22" title="Permanent link">&para;</a></h2>
+<p>请证明：对于任意整数 <span class="arithmatex">\(n\geq {1}\)</span>，<span class="arithmatex">\(\lceil \log(n+1) \rceil =\lfloor \log n \rfloor+1\)</span>
+Proof：
+假设 <span class="arithmatex">\(2^{k}\leq n\leq 2^{k+1}-1\)</span>,  则  <span class="arithmatex">\(k&lt;\log (n+1)\leq k+1\)</span>
+则: <span class="arithmatex">\(\lceil \log(n+1) \rceil=k+1\)</span>
+同理，<span class="arithmatex">\(k\leq\log(n)&lt;k+1\)</span>
+则：<span class="arithmatex">\(\lfloor \log n \rfloor+1=k+1\)</span>
+即证得</p>
+<h2 id="25">2.5<a class="headerlink" href="#25" title="Permanent link">&para;</a></h2>
+<p>我们越过第一问直接证明第二问，则第一问也是显然的
+Proof:
+用数学归纳法.
+当 T 的节点数 <span class="arithmatex">\(n=1\)</span> 时，显然成立 <span class="arithmatex">\(n_{0}=n_{2}+1\)</span>
+假设 <span class="arithmatex">\(n=k-1\)</span> 时成立 <span class="arithmatex">\(n_{0}=n_{2}+1\)</span>，证明 <span class="arithmatex">\(n=k\)</span> 时也成立：
+分两种情况讨论：
+若新加的节点，作为左节点加入：
+    则 <span class="arithmatex">\(n_{0}\)</span> 数目不变，<span class="arithmatex">\(n_{2}\)</span> 数目不变，仍然成立
+若新加的节点，作为右节点接入：
+    则 <span class="arithmatex">\(n_{2}+=1\)</span>，<span class="arithmatex">\(n_{0}+=1\)</span>，仍然成立</p>
+<p>故递归步骤可以完成，故得证。</p>
+<h2 id="27">2.7<a class="headerlink" href="#27" title="Permanent link">&para;</a></h2>
+<ol>
+<li>传递性证明
+先证明 <span class="arithmatex">\(O\)</span> 
+假设存在函数 <span class="arithmatex">\(f,g,h\)</span>，且 <span class="arithmatex">\(f\in O(g),\;g\in O(h)\)</span>
+Then 
+$$
+\lim_{ n \to \infty } \frac{f(n)}{g(n)}=c_{1}&lt;\infty
+$$
+且
+$$
+\lim_{ n \to \infty } \frac{g(n)}{h(n)}=c_{2}&lt;\infty
+$$
+则
+$$
+\lim_{ n \to \infty } \frac{f (n)}{h (n)}=\lim_{ n \to \infty } \frac{f(n)}{g(n)}\times \frac{g(n)}{h(n)}
+=\lim_{ n \to \infty } \frac{f(n)}{g(n)}\times\lim_{ n \to \infty } \frac{g(n)}{h(n)}=c_{1}c_{2}&lt;\infty
+$$
+则有 <span class="arithmatex">\(f\in O(h)\)</span>，符合传递性（利用了极限的四则运算）</li>
+</ol>
+<p>对于 <span class="arithmatex">\(\Omega\)</span> 的证明完全类似，略去。
+对于 <span class="arithmatex">\(o\)</span> 的证明：只需要认识到两个极限都趋于 0 时，其有限个乘积的极限也是 0 立得
+对于 <span class="arithmatex">\(\omega\)</span> 的证明与 <span class="arithmatex">\(o\)</span> 完全类似，略去
+对于 <span class="arithmatex">\(\Theta\)</span> 的证明： 我们利用已经证明的 <span class="arithmatex">\(\Omega\)</span> 和 <span class="arithmatex">\(O\)</span> 的结论
+    To Prove:  if <span class="arithmatex">\(f\in \Theta(g)\land g\in \Theta(h)\)</span>，then <span class="arithmatex">\(f\in \Theta(h)\)</span>
+    Proof:
+<span class="arithmatex">\(f\in \Theta(g)\to f\in O(g)\land f\in \Omega(g),g\in \Theta(h)\to g\in O(h)\land g\in \Theta(h)\)</span>
+由前结论，知道 <span class="arithmatex">\(f\in O(h)\land f\in \Omega(h)\)</span>
+故 <span class="arithmatex">\(f\in \Theta(h)\)</span>
+证明完成。</p>
+<ol>
+<li>
+<p>自反性
+证明： 
+先证明 <span class="arithmatex">\(O\)</span>
+假设有一个函数 <span class="arithmatex">\(f\)</span>，则显然 
+$$
+\lim_{ n \to \infty } \frac{f(n)}{f(n)}=1&lt;\infty
+$$
+满足 <span class="arithmatex">\(f\in O(f)\)</span>
+同理，
+$$
+\lim_{ n \to \infty } \frac{f(n)}{f(n)}=1&gt;0
+$$
+满足 <span class="arithmatex">\(f\in \Omega(f)\)</span>
+由 <span class="arithmatex">\(f\in O(f)\land f\in \Omega(f)\to f\in \Theta(f)\)</span>
+满足 <span class="arithmatex">\(f\in \Theta(f)\)</span></p>
+</li>
+<li>
+<p>证明 <span class="arithmatex">\(\Theta\)</span> 是等价关系
+Proof: 由 2 已经证明 <span class="arithmatex">\(\Theta\)</span> 满足自反性，由 1 已经证明传递性，只需证明对称性即可。
+To Prove: if <span class="arithmatex">\(f\in \Theta(g)\)</span>，then <span class="arithmatex">\(g \in\Theta(f)\)</span>
+<span class="arithmatex">\(f\in \Theta(g)\)</span>
+$$
+\lim_{ n \to \infty } \frac{f(n)}{g(n)}=c,c\in(0,\infty)
+$$
+故
+$$
+\lim_{ n \to \infty } \frac{g(n)}{f(n)}=\lim_{ n \to \infty } \frac{1}{\frac{f(n)}{g(n)}}=\frac{1}{\lim_{ n \to \infty } \frac{f(n)}{g(n)}}=\frac{1}{c}\in\left( 0, \infty \right)
+$$
+故 <span class="arithmatex">\(g\in \Theta(f)\)</span></p>
+</li>
+<li>
+<p>We know
+$$
+\lim_{ n \to \infty } \frac{f(n)}{g(n)}=c,c\in(0,\infty) 
+$$
+则知道我们满足
+$$
+\lim_{ n \to  \infty} \frac{f(n)}{g(n)}&lt;\infty \; \land\; \lim_{ n \to \infty } \frac{f(n)}{g(n)}&gt;0
+$$
+由 <span class="arithmatex">\(O,\Omega\)</span> 定义，知道 <span class="arithmatex">\(f\in O(g)\land f\in \Omega(g)\)</span></p>
+</li>
+</ol>
+<p>反向推类似，故这两种表述是等价的。</p>
+<ol>
+<li>证明 <span class="arithmatex">\(f\in O(g)\iff g\in \Omega(f)\)</span>
+If <span class="arithmatex">\(f\in O(g)\)</span>, then
+$$
+\lim_{ n \to \infty } \frac{f(n)}{g(n)}=c&lt;\infty
+$$
+则由极限的四则运算性质，有
+$$
+\lim_{ n \to \infty } \frac{g(n)}{f(n)}=\lim_{ n \to \infty } \frac{1}{\frac{f(n)}{g(n)}}=\frac{1}{c}&gt;0
+$$
+故 <span class="arithmatex">\(g\in \Omega(f)\)</span>
+<span class="arithmatex">\(o\)</span> 的证明完全类似，只需要注意在算法复杂度领域我们认为 c 恒不负，即可得到
+$$
+f\in o(g)\iff g\in \omega(f)
+$$</li>
+<li>Prove <span class="arithmatex">\(o(g(n))\cap \omega(g(n))=\emptyset\)</span>
+<span class="arithmatex">\(\forall f\in o(g(n))\)</span>, we hold that
+$$
+\forall c&gt;0,\exists n_{0}&gt;0,0\leq f(n)<cg(n) \text{ when <span class="arithmatex">\(n\geq n_{0}\)</span>}
+$$
+<span class="arithmatex">\(\forall h\in \omega(g(n))\)</span>, we hold that
+$$
+\forall c>0,\exists n_{0}&gt;0,0\leq cg(n)&lt;f(n)\text{ when <span class="arithmatex">\(n \geq n_{0}\)</span>}
+$$
+取 <span class="arithmatex">\(N\)</span> 为 <span class="arithmatex">\(f\)</span> 和 <span class="arithmatex">\(h\)</span> 对应的 <span class="arithmatex">\(n_0\)</span> 中较大的一个，当 <span class="arithmatex">\(n&gt;N\)</span>, 发现
+$$
+f(n)&lt;cg(n)\land cg(n)&lt;f(n)=False
+$$
+故二者交集为空。</li>
+</ol>
+<h2 id="28">2.8 渐进增长率排序<a class="headerlink" href="#28" title="Permanent link">&para;</a></h2>
+<p>1.
+$$
+\log n&lt;n&lt;\;n\log n&lt;\;n<sup>{2}=\;n</sup>{2}+\log n&lt;n<sup>{3}&lt;n-n</sup>{3}+7n<sup>{5}&lt;2</sup>{n},\;
+$$
+2.
+$$
+\begin{align}
+\log \log n&amp;&lt;\log n=\;\ln n&lt;(\log n)^{2}&lt;\;\sqrt{ n } \
+&amp;&lt;\;n&lt;\;n^{1+\varepsilon}&lt;\;n\log n&lt;\;n^{2} \
+&amp;=\;n^{2}+\log n&lt;n<sup>{3}&lt;n-n</sup>{3}+7n<sup>{5}&lt;2</sup>{n-1}&lt;\;2<sup>{n}&lt;e</sup>{n}&lt;\;n!\;
+\end{align}
+$$</p>
+<h2 id="216">2.16 计算渐进增长率<a class="headerlink" href="#216" title="Permanent link">&para;</a></h2>
+<p>引用 master 定理在这里：
+Divide-and-conquer:
+<span class="arithmatex">\(T(n)=bT\left( \dfrac{n}{c} \right)+f(n)\)</span>
+主定理：
+Define <span class="arithmatex">\(E=\frac{{\log b}}{\log c}\)</span></p>
+<ul>
+<li><span class="arithmatex">\(f(n)\in O(n^{E-\varepsilon})\)</span>,  then <span class="arithmatex">\(T(n)\in\Theta(n^{E})\)</span></li>
+<li><span class="arithmatex">\(f(n)\in\Theta(n^{E})\)</span>,  then <span class="arithmatex">\(T(n)\in\Theta(f(n)\log n)\)</span></li>
+<li><span class="arithmatex">\(f(n)\in \Omega(n^{E+\varepsilon})\)</span>, and <span class="arithmatex">\(f(n)\in O(n^{E+\delta}),\delta\geq \varepsilon\)</span> then <span class="arithmatex">\(T(n)\in \Theta(f(n))\)</span></li>
+</ul>
+<p>做题：(为防止与我习惯的 c 概念混淆，如果是用 MasterTheorm 解决的题，f(n) 的常数 c我用 a 替代)
+1. <span class="arithmatex">\(T(n)=2T\left( \frac{n}{3} \right)+1\)</span>
+<span class="arithmatex">\(b=2,c=3,f(n)=1,E=\log_{3}2\)</span>, <span class="arithmatex">\(1\in O(n^{E})\)</span>
+$$
+T(n)\in \Theta(n^{\log_{3}2})
+$$
+2. 
+$$
+\begin{align}
+T(n)&amp;=T\left( \frac{n}{2} \right)+c\log n \
+&amp;=T\left( \frac{n}{4} \right)+c\log n+c\log \frac{n}{2} \
+ &amp; =\dots \
+ &amp; =T(1)+\sum_{k=0}^{\log n}c\log \frac{n}{2^{k}} \
+ &amp; =1+c\log ^{2}n-\frac{c{\log ^{2}n}}{2} \
+ &amp; =1+\frac{{c\log ^{2}n}}{2}
+\end{align}
+$$
+3. 
+满足 <span class="arithmatex">\(f(n)=cn\in \Omega(n^{E+\varepsilon})\land f(n)\in O(n^{E+\delta})\)</span>, 其中 <span class="arithmatex">\(\epsilon\)</span> 可取 <span class="arithmatex">\(0.8\)</span>, <span class="arithmatex">\(\delta\)</span> 可取 <span class="arithmatex">\(1.2\)</span>
+So
+$$
+T(n)\in \Theta(cn)
+$$
+4. 
+满足
+$$
+f(n)\in \Theta(n^{E})=\Theta(n)
+$$
+So
+$$
+T(n)\in \Theta(n\log n)
+$$
+5. 
+Can' t not be solved by Master Theorm
+$$
+T(n)=2\left( \frac{n}{2} \right)+cn\log n
+$$
+Draw recursive Tree, we can get
+$$
+T(n)=nT(1)+c\sum_{k=0}^{\log n}2<sup>{k}{\frac{n}{2</sup>{k}}\log {\frac{n}{2<sup>{k}}}}=n+c\sum_{k=0}</sup>{\log n}n\log \frac{n}{2^{k}}
+$$
+Finally,
+$$
+T(n)=n+cn\log ^{2}n-cn{\frac{{\log ^{2}n}}{2}}=n+\frac{{cn\log ^{2}n}}{2}=O(n\log ^{2}n)
+$$
+6. 
+Similarily
+$$
+T(n)=nT(1)+\sum_{k=0}<sup>{\log_{3}n}3</sup>{k}{\frac{n}{3^{k}}\times \log ^{3} \frac{n}{3^{k}}}
+$$
+So
+$$
+\begin{align}
+T(n) &amp; =n+\sum_{k=0}^{\log_{3}n}n\times (\log n-k\log{3})^{3} \
+ &amp; =n\sum_{k=0}^{\log_{3}n}\left[ (\log n)^{3}-3(\log n)^{2}(k\log 3)+3(\log n)(k\log3)^{2} -(k\log 3)^{3}\right]  \
+ &amp; =O(n\log ^{4}n)
+\end{align}
+$$</p>
+<ol>
+<li>
+<p>By MasterTheorm.
+<span class="arithmatex">\(f(n)=cn^{2}\in \Omega(n^{E+0.5})\)</span>, and <span class="arithmatex">\(f(n)\in O(n^{E+2})\)</span>
+故 <span class="arithmatex">\(T(n)\in \Theta(n^{2})\)</span></p>
+</li>
+<li>
+<p>By MasterTheorm
+<span class="arithmatex">\(f(n)=n^{3/2}\log n\)</span>, define <span class="arithmatex">\(E=\frac {{\log 49}} {\log 25}=\frac{{\log 7}}{\log 5}\)</span>
+符合第三个条件
+$$
+T(n)\in \Theta(n^{3/2}\log n)
+$$</p>
+</li>
+<li>
+<div class="arithmatex">\[
+T(n)=T(n-1)+2
+$$
+Then
+$$
+\begin{align}
+T(n) &amp; =T(n-1)+2 \\
+ &amp;=T(n-2)+2+2 \\
+ &amp; =T(n-3)+2+2+2 \\
+ &amp; =\dots \\
+ &amp; =T(1)+2\times (n-1)=\Theta(n)
+\end{align}
+\]</div>
+</li>
+<li>
+<div class="arithmatex">\[
+\begin{align}
+T(n) &amp; =T(n-1)+n^{c} \\
+ &amp; =T(n-2)+n^{c}+(n-1)^{c} \\
+ &amp; =\dots \\
+ &amp; =T(1)+\sum_{k=2}^{n}k^{c} \\
+ &amp; =\Theta(n^{c+1})
+\end{align}
+\]</div>
+</li>
+<li>$$
+\begin{align}
+T(n) &amp; =T(n-1)+c^{n} \
+ &amp; =T(n-2)+c<sup>{n}+c</sup>{n-1} \
+ &amp; =\dots \
+ &amp; =T(1)+c<sup>{n}+c</sup>{n-1}+\dots+c^{2} \
+ &amp; =\Theta(c^{n+1})
+\end{align}</li>
+</ol>
+<p>$$</p>
+<ol>
+<li>
+<p>$$
+T(n)=T(n-2)+2n<sup>{3}-3n</sup>{2}+3n
+$$
+主导项为 <span class="arithmatex">\(2n^{3}\)</span>
+故 <span class="arithmatex">\(T(n)\leq T(n-2)+2n^{3}\)</span>
+$$~
+T(n)\leq \sum_{i=0}<sup>{k-1}2(n-2i)</sup>{3}\leq \int_{0}<sup>{k}2(n-2x)</sup>{3}dx=\int 2u<sup>{3}du=\frac{u</sup>{4}}{2}
+$$
+增长率 <span class="arithmatex">\(\Theta(n^{4})\)</span></p>
+</li>
+<li>
+<p><span class="arithmatex">\(T(n)=T\left( \frac{n}{2} \right)+T\left( \frac{n}{4} \right)+T\left( \frac{n}{8}+n \right)\)</span>
+... 以后再来挑战没做出</p>
+</li>
+</ol>
+<h2 id="218">2.18<a class="headerlink" href="#218" title="Permanent link">&para;</a></h2>
+<p>计算 <span class="arithmatex">\(T(n)=\sqrt{ n }T(\sqrt{ n })+O(n)\)</span> 复杂度
+代换，Let <span class="arithmatex">\(n=e^{ t }\)</span>
+则 <span class="arithmatex">\(T(e^{ t })=e^{ t/2 }T(e^{ t/2 })+O(e^{ t }))\)</span>
+则
+$$
+\frac{T(e^{ t })}{e^{ t }}=\frac{T(e^{ t/2 })}{e^{ t/2 }}+O(1)
+$$
+令 <span class="arithmatex">\(S(t)=\frac{T(e^{ t })}{e^{ t }}\)</span>
+$$
+S(t)=S\left( \frac{t}{2} \right)+O(1)
+$$
+则 <span class="arithmatex">\(S(t)\in \Theta(\log t)=\Theta(\log \log n)\)</span>
+则 <span class="arithmatex">\(T(n)=nS(t)\in n\Theta(S(t))\)</span>
+$$
+T(n)\in \Theta(n\log \log n)
+$$</p>
+<h2 id="219">2.19<a class="headerlink" href="#219" title="Permanent link">&para;</a></h2>
+<div class="arithmatex">\[
+a=1,\;b=2,\;f(n)=\log n
+\]</div>
+<h2 id="222">2.22<a class="headerlink" href="#222" title="Permanent link">&para;</a></h2>
+<p>ALG 1: 输出 1
+ALG 2：输出 1</p>
+<p>时间复杂度：
+ALG 1 <span class="arithmatex">\(\Theta(n)\)</span>
+ALG 2 <span class="arithmatex">\(\Theta(n\log n)\)</span></p>
+<h2 id="224">2.24<a class="headerlink" href="#224" title="Permanent link">&para;</a></h2>
+<p>MYSTERY (n)
+$$
+\begin{align}
+r &amp; =\sum_{i=1}^{n-1}\sum <em>{j=i+1}<sup>{n}\sum_{k=1}</sup>{j}1 \
+ &amp; =\sum</em>{i=1}<sup>{n-1}\sum_{j=i+1}</sup>{n}j \
+ &amp; =\sum_{i=1}^{n-1}\left( {\frac{(i+1+n)(n-i)}{2}} \right) \
+ &amp; =\frac{{(n-1)n}(n+1)}{3}
+\end{align}
+$$
+返回结果为 <span class="arithmatex">\(\frac{(n-1)n(n+1)}{3}\)</span>，由于算法每次操作只能使得 r:=r+1 且 r 初值为 0，所以时间复杂度和返回结果的大小同阶，为 <span class="arithmatex">\(O(n^{3})\)</span></p>
+<p>PERSKY (n)
+$$
+\begin{align}
+r= &amp; \sum_{i=1}<sup>{n}\sum_{j=1}</sup>{i}\sum_{k=j}^{i+j}1 \
+= &amp;\sum_{i=1}<sup>{n}\sum_{j=1}</sup>{i}i \
+= &amp; \sum_{i=1}<sup>{n}i</sup>{2} \
+= &amp; \frac{n(n+1)(2n+1)}{6} 
+\end{align}
+$$
+返回结果为 <span class="arithmatex">\(\frac{n(n+1)(2n+1)}{6}\)</span>, 时间复杂度为 <span class="arithmatex">\(O(n^{3})\)</span></p>
+<p>PRESTIFEROUS (n)
+$$
+\begin{align}
+r= &amp; \sum_{i=1}<sup>{n}\sum_{j=1}</sup>{i}\sum_{k=j}^{i+j}\sum <em>{l=1}^{i+j-k}1 \
+= &amp; \sum</em>{i=1}^{n}\sum <em>{j=1}^{i}\sum </em>{k=j}^{i+j}(i+j-k) \
+= &amp; \sum_{i=1}<sup>{n}\sum_{j=1}</sup>{i} {\frac{(2i+j)(i+1)}{2}} \
+= &amp; \sum_{i=1}^{n} \left( \frac{{\left(1+i \right) <sup>{2}i}}{4}+i</sup>{3}+i^{2} \right) \ \
+= &amp; \frac{9}{4}\left( \frac{n(n+1)}{2} \right) ^{2}+\frac{5}{2}\times \frac{n(n+1)(2n+1)}{6}+{\frac{1}{4}\times \frac{(1+n)n}{2}}</p>
+<p>\end{align}
+$$</p>
+<p>CONUNDRUM (n)
+$$
+\begin{align}
+r= &amp; \sum_{i=1}<sup>{n}\sum_{j=i+1}</sup>{n}\sum_{k=i+j-1}^{n}1 \
+= &amp; \sum_{i=1}<sup>{n}\sum_{j=i+1}</sup>{n}\left( n-(i+j-1)+1 \right)  \
+= &amp; \sum_{i=1}^{n}\left( n-3i+3 \right) (n-i) \
+= &amp; n^{3}-4n\times \frac{(n+1)n}{2}+3n^{2}-3\times \frac{n(n+1)}{2}+\frac{n(n+1)(2n+1)}{6}\
+\end{align}
+$$
+时间复杂度 <span class="arithmatex">\(O(n^{3})\)</span></p>
+<h1 id="chapter-3-brute-force">Chapter 3 Brute Force<a class="headerlink" href="#chapter-3-brute-force" title="Permanent link">&para;</a></h1>
+<h2 id="32-bubble-sort">3.2 (Bubble Sort)<a class="headerlink" href="#32-bubble-sort" title="Permanent link">&para;</a></h2>
+<ol>
+<li>证明冒泡排序的正确性
+Proof:
+先证明排序的每层 <span class="arithmatex">\(i\)</span> 循环，会保证 <span class="arithmatex">\([i-1,n-1]\)</span> 是排好序的，即每次将 <span class="arithmatex">\([0,i-1]\)</span> 中最大的元素放到 <span class="arithmatex">\(i-1\)</span> 位置</li>
+</ol>
+<p>我们假设一个最大的元素 <span class="arithmatex">\(m\)</span>, 其 index 为 <span class="arithmatex">\(k\)</span>, 则根据循环算法，其必然会满足 <span class="arithmatex">\(m&gt;A[j],j\in[0,i-1]\land j\neq m\)</span>
+则 <span class="arithmatex">\(m\)</span> 元素会依次和 <span class="arithmatex">\(k+1,k+2\dots\)</span> 交换，故最后其会落在 <span class="arithmatex">\(i-1\)</span></p>
+<p>则循环每次能保证 <span class="arithmatex">\([i-1,n-1]\)</span> 是排好序的
+现在考虑 i down to 2，用反证法证明 <span class="arithmatex">\([i-1,n-1]\)</span> is sorted then <span class="arithmatex">\([i-2,n-1]\)</span> is sorted 
+假设 <span class="arithmatex">\([i-2,n-1]\)</span> 是没有排好序，则由循环算法处理方式可知，只可能是 <span class="arithmatex">\(A[i-2]&gt;A[i-1]\)</span> ，而这与
+<div class="highlight"><pre><span></span><code><span class="k">if</span> <span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">&gt;</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="n">then</span>
+    <span class="n">SWAP</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="p">],</span><span class="n">A</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span>
+</code></pre></div>
+矛盾，故假设不成立</p>
+<p>故递归下去，可知 <span class="arithmatex">\([0,n-1]\)</span> 都会排好序。</p>
+<ol>
+<li>
+<p>对于题中算法，我们每次遍历都不可避免的对相邻元素进行比较，与 input 无关
+$$
+T(n)=\sum_{i=2}^{n}\sum _{j=1}<sup>{i-1}=\sum_{i=2}</sup>{n}(i-1)=\frac{{(1+n)(n-1)}}{2}
+$$
+<span class="arithmatex">\(T(n)\in \Theta(n^{2})\)</span>
+最坏和平均情况都是如此</p>
+</li>
+<li>
+<p>最坏情况下不影响：假设数组完全逆序，那么每次 k 出现在 i-1 处，和不加优化的情况下是一样的
+平均情况：假设元素随机排列，那么这个优化使得每次 <span class="arithmatex">\(k\)</span> 出现的位置的数学期望为 <span class="arithmatex">\(\frac{{i-1}}{2}\)</span></p>
+</li>
+</ol>
+<p>$$
+T(n)=\sum_{i=2}<sup>{n}\sum_{j=1}</sup>{i-1}=\sum_{i=2}^{n}\left( \frac{{i-1}}{2} \right)=\frac{(1+n)(n-2)}{4}
+$$
+<span class="arithmatex">\(T(n)\in \Theta(n^{2})\)</span></p>
+<h2 id="35-previious-larger">3.5 PREVIIOUS-LARGER<a class="headerlink" href="#35-previious-larger" title="Permanent link">&para;</a></h2>
+<p><span class="arithmatex">\(P[i]\)</span> 记录了 <span class="arithmatex">\(i\)</span> 序列中位于 <span class="arithmatex">\(a_{i}\)</span> 左边且值比 <span class="arithmatex">\(a_{i}\)</span> 大的 index 最大的元素，我们通过利用 <span class="arithmatex">\(P[i]\)</span> 的记录可以降低复杂度水平。即：<span class="arithmatex">\(arr[P[i+k]]\)</span> 一定大于等于 <span class="arithmatex">\(arr[P[i]]\)</span>，利用这一点可以避免不必要的查找。即我们对数组的遍历是不重复的，这样就达到的 <span class="arithmatex">\(O(n)\)</span> 级别。Code 实现如下</p>
+<p><div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">PREVIOUSLARGER</span><span class="p">(</span><span class="nb">list</span> <span class="n">arr</span><span class="p">)</span>
+    <span class="n">P</span><span class="p">[]</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">))</span><span class="c1">#初始化为0,1,2,...,len-1</span>
+    <span class="k">for</span> <span class="n">i</span><span class="o">:=</span> <span class="mi">1</span> <span class="n">to</span> <span class="n">n</span> <span class="n">do</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">arr</span><span class="p">[</span><span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]]:</span><span class="c1">#如果arr[i]大于arr[0:i-1]的最大元素</span>
+            <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span> <span class="c1">#则此位最大元素是本身，返回自身下标</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+</code></pre></div>
+正确性证明：
+首先显而易见：
+$$
+arr[P[i+k]]\geq arr[P[i]],i,j\in Z^{+}
+$$
+根据这一点可以推导出 <span class="arithmatex">\(P[i]\)</span>  是数组前 i 个最大的元素
+用数学归纳法：
+Base case: 当数组只有一个元素，显而易见算法返回正确值即 0（自己的下标）
+I.H: 假设 <span class="arithmatex">\(P[]\)</span> 没有正确计算，则存在最小的不正确项之前都是正确的，假设 k 之前都是正确的。
+若 <span class="arithmatex">\(arr[k+1]\geq arr[P[k]]\)</span>，k+1 是最大元素下标，<span class="arithmatex">\(P[k+1]=k\)</span> 正确计算
+否则，数组前 k+1 位的最大元素应该是数组前 k 位的最大元素，<span class="arithmatex">\(P[k+1]=P[k]\)</span>，由于 <span class="arithmatex">\(P[k]\)</span> 已经正确计算，所以 <span class="arithmatex">\(P[k+1]\)</span> 也可以正确计算，q.e.d</p>
+<h2 id="36">3.6 数组左右交换位置<a class="headerlink" href="#36" title="Permanent link">&para;</a></h2>
+<h3 id="1-o-n2-o-1">1 O (n^2), O (1)<a class="headerlink" href="#1-o-n2-o-1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">Def</span> <span class="n">SwapPart</span><span class="p">(</span><span class="n">arr</span><span class="p">[],</span><span class="nb">int</span> <span class="n">k</span><span class="p">):</span>
+    <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">k</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">):</span>
+        <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">):</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">k</span><span class="o">==</span><span class="n">j</span><span class="p">):</span>
+                <span class="n">SWAP</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+</code></pre></div>
+<h3 id="2-o-n-o-n">2 O (n), O (n)<a class="headerlink" href="#2-o-n-o-n" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">Def</span> <span class="n">SwapPart2</span><span class="p">(</span><span class="n">arr</span><span class="p">[],</span><span class="nb">int</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">arr1</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">,</span> <span class="mi">0</span><span class="o">&lt;=</span><span class="n">i</span><span class="o">&lt;</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">arr2</span><span class="o">=</span><span class="p">[</span><span class="n">j</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">arr</span><span class="p">,</span> <span class="n">k</span><span class="o">&lt;=</span><span class="n">j</span><span class="o">&lt;</span><span class="n">n</span><span class="p">]</span>
+    <span class="c1">#cost time and space both in O(n)</span>
+    <span class="c1">#compose two part into one</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">)):</span>
+        <span class="k">if</span><span class="p">(</span><span class="mi">0</span><span class="o">&lt;=</span><span class="n">i</span><span class="o">&lt;</span><span class="n">k</span><span class="p">):</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">arr1</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">arr2</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="n">k</span><span class="p">]</span>
+    <span class="c1">#cost time O(n)</span>
+</code></pre></div>
+<h3 id="3o-n-o-1">3.O (n), O (1)<a class="headerlink" href="#3o-n-o-1" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><span class="n">Def</span> <span class="n">SwapPart3</span><span class="p">(</span><span class="n">arr</span><span class="p">[],</span><span class="nb">int</span> <span class="n">k</span><span class="p">):</span>
+    <span class="nb">int</span> <span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="nb">int</span> <span class="n">right</span><span class="o">=</span><span class="n">k</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="n">right</span><span class="o">&lt;</span><span class="n">n</span><span class="o">&amp;&amp;</span><span class="n">left</span><span class="o">&lt;</span><span class="n">k</span><span class="p">):</span>
+        <span class="n">SWAP</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="n">left</span><span class="p">],</span><span class="n">arr</span><span class="p">[</span><span class="n">right</span><span class="p">])</span>
+        <span class="n">left</span><span class="o">+=</span><span class="mi">1</span>
+        <span class="n">right</span><span class="o">+=</span><span class="mi">1</span>
+</code></pre></div>
+<h2 id="38-celebrity-problem">3.8 Celebrity Problem<a class="headerlink" href="#38-celebrity-problem" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Max celebrity amount in n people.
+    SOLUTION:  最多只有 1 个名人。
+    反证法：假设有大于等于两个名人，任意取其中两个名人，记为 A 和 B. 
+    因为 <span class="arithmatex">\(A\)</span> 是名人，所以 <span class="arithmatex">\(A\)</span> 被所有人关注，因为 <span class="arithmatex">\(B\in 所有人\)</span>，所以 <span class="arithmatex">\(B\)</span> 关注 <span class="arithmatex">\(A\)</span>. 而 <span class="arithmatex">\(B\)</span> 是名人，所以 <span class="arithmatex">\(B\)</span> 不关注任何人，矛盾。故最多只有 1 个名人。</li>
+<li>
+<p>设计找出名人算法
+    思路：
+    Create two pointer: i and j. i is initialized as 0 (beginning), and j as n-1 (ended)
+    In each loop (ended when i &gt;= j),  we check if j knows i.
+        If j knows i, then j can' t be celebrity, we moved it back "1", that is j-=1. Obviously, this operatoins don' t affect the answer. We just move n-1 out of the candidates
+        Else, then i can' t be celebrity. We process it similarily to the first case.</p>
+<p>When it ended, then c=i. c is the final candidate. Then we do a range (n) loop to check if c really know anyone else.</p>
+</li>
+</ol>
+<p>This algorithm made 2 loop over size n array, running in <span class="arithmatex">\(O(n)\)</span> time and <span class="arithmatex">\(O(1)\)</span> space
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">celebrity</span><span class="p">(</span><span class="n">mat</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">j</span><span class="p">:</span>
+
+        <span class="c1"># j knows i, thus j can&#39;t be celebrity</span>
+        <span class="k">if</span> <span class="n">mat</span><span class="p">[</span><span class="n">j</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">j</span> <span class="o">-=</span> <span class="mi">1</span>
+
+        <span class="c1"># else i can&#39;t be celebrity</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+
+    <span class="c1"># i points to our celebrity candidate</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">i</span>
+
+    <span class="c1"># Check if c is actually</span>
+    <span class="c1"># a celebrity or not</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="n">c</span><span class="p">:</span>
+            <span class="k">continue</span>
+
+        <span class="c1"># If any person doesn&#39;t</span>
+        <span class="c1"># know &#39;c&#39; or &#39;c&#39; doesn&#39;t</span>
+        <span class="c1"># know any person, return -1</span>
+        <span class="k">if</span> <span class="n">mat</span><span class="p">[</span><span class="n">c</span><span class="p">][</span><span class="n">i</span><span class="p">]</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">mat</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">c</span><span class="p">]:</span>
+            <span class="k">return</span> <span class="o">-</span><span class="mi">1</span>
+
+    <span class="k">return</span> <span class="n">c</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+           <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">celebrity</span><span class="p">(</span><span class="n">mat</span><span class="p">))</span>
+</code></pre></div></p>
+<h2 id="39">3.9 最大和连续子序列<a class="headerlink" href="#39" title="Permanent link">&para;</a></h2>
+<p>设计 O (n^3) 算法
+<div class="highlight"><pre><span></span><code><span class="n">Def</span> <span class="n">maxSeqSum</span><span class="p">(</span><span class="n">arr</span> <span class="p">[]):</span>
+    <span class="n">maxSum</span><span class="o">=-</span><span class="n">inf</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">i</span><span class="o">++</span><span class="p">):</span><span class="c1">#loop the start of seq</span>
+        <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">):</span><span class="c1">#loop the end of seq</span>
+            <span class="n">thisSum</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+            <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">k</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">k</span><span class="o">&lt;</span><span class="n">j</span><span class="p">;</span><span class="n">k</span><span class="o">++</span><span class="p">):</span><span class="c1">#loop SUM</span>
+                <span class="n">thisSum</span><span class="o">+=</span><span class="n">arr</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">thisSum</span><span class="o">&gt;</span><span class="n">maxSum</span><span class="p">):</span>
+                <span class="n">maxSum</span><span class="o">=</span><span class="n">thisSum</span>
+    <span class="k">return</span> <span class="n">maxSum</span><span class="p">;</span>
+</code></pre></div></p>
+<p>设计 O (n^2) 基于遍历的算法
+<div class="highlight"><pre><span></span><code><span class="n">Def</span> <span class="n">maxSeqSum2</span><span class="err">（</span><span class="n">arr</span><span class="p">[]</span><span class="err">）</span><span class="p">:</span>
+    <span class="n">MaxSum</span><span class="o">=-</span><span class="n">inf</span>
+    <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">):</span>
+        <span class="n">ThisSum</span><span class="o">=</span><span class="mi">0</span>
+        <span class="k">for</span><span class="p">(</span><span class="nb">int</span> <span class="n">j</span><span class="o">=</span><span class="n">i</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">):</span>
+            <span class="n">ThisSum</span><span class="o">+=</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+            <span class="k">if</span><span class="p">(</span><span class="n">ThisSum</span><span class="o">&gt;</span><span class="n">MaxSum</span><span class="p">)</span>
+                <span class="n">MaxSum</span><span class="o">=</span><span class="n">ThisSum</span>
+
+    <span class="k">return</span> <span class="n">MaxSum</span>
+</code></pre></div></p>
+<p>设计分治的 O (nlogn) 算法
+<div class="highlight"><pre><span></span><code><span class="n">Def</span> <span class="n">maxSeqSum3</span><span class="p">(</span><span class="n">arr</span><span class="p">[],</span><span class="n">left</span><span class="p">,</span><span class="n">right</span><span class="p">):</span>
+    <span class="c1">#base case</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">right</span><span class="o">-</span><span class="n">left</span><span class="o">&lt;=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">arr</span><span class="p">[</span><span class="n">left</span><span class="p">]</span>
+    <span class="nb">int</span> <span class="n">center</span><span class="o">=</span><span class="p">(</span><span class="n">left</span><span class="o">+</span><span class="n">right</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
+    <span class="nb">int</span> <span class="n">leftMax</span><span class="o">=</span><span class="n">maxSeqSum3</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="n">left</span><span class="p">,</span><span class="n">center</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">int</span> <span class="n">rightMax</span><span class="o">=</span><span class="n">maxSeqSum3</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span><span class="n">center</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">right</span><span class="p">)</span>
+
+    <span class="c1">#calculate the center part max sum</span>
+    <span class="nb">int</span> <span class="n">leftBorderSum</span><span class="o">=</span><span class="mi">0</span>
+    <span class="nb">int</span> <span class="n">maxLeftBorderSum</span><span class="o">=</span><span class="n">arr</span><span class="p">[</span><span class="n">center</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="nb">int</span> <span class="n">p</span><span class="o">=</span><span class="n">center</span><span class="o">-</span><span class="mi">1</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">center</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&gt;=</span> <span class="n">left</span><span class="p">;</span> <span class="n">i</span><span class="o">--</span><span class="p">):</span>
+        <span class="n">leftBonderSum</span> <span class="o">+=</span> <span class="n">center</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxLeftBonderSum</span> <span class="o">&lt;</span> <span class="n">leftBonderSum</span><span class="p">):</span>
+            <span class="n">maxLeftBonderSum</span> <span class="o">=</span> <span class="n">leftBonderSum</span>
+
+
+    <span class="nb">int</span> <span class="n">rightBonderSum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">int</span> <span class="n">maxRightBonderSum</span> <span class="o">=</span> <span class="n">arr</span><span class="p">[</span><span class="n">center</span><span class="p">]</span>
+    <span class="k">for</span> <span class="p">(</span><span class="nb">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">center</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">right</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">):</span>
+        <span class="n">rightBonderSum</span> <span class="o">+=</span> <span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">maxRightBonderSum</span> <span class="o">&lt;</span> <span class="n">rightBonderSum</span><span class="p">):</span>
+            <span class="n">maxRightBonderSum</span> <span class="o">=</span> <span class="n">rightBonderSum</span>
+    <span class="k">return</span> <span class="n">MAX</span><span class="p">(</span><span class="n">maxLeftBonderSum</span> <span class="o">+</span> <span class="n">maxRightBonderSum</span><span class="p">,</span> <span class="n">maxLeftSum</span><span class="p">,</span> <span class="n">maxRightSum</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+设计规避重复计算的线性算法 O (n)
+<div class="highlight"><pre><span></span><code><span class="n">Def</span> <span class="n">maxSeqSum4</span><span class="p">(</span><span class="n">arr</span><span class="p">[]):</span>
+    <span class="n">thisSum</span><span class="o">=</span><span class="n">maxSum</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="n">j</span><span class="o">&lt;</span><span class="n">N</span><span class="p">;</span><span class="n">j</span><span class="o">++</span><span class="p">){</span>
+        <span class="n">thisSum</span><span class="o">+=</span><span class="n">arr</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+        <span class="k">if</span><span class="p">(</span><span class="n">thisSum</span><span class="o">&gt;</span><span class="n">maxSum</span><span class="p">):</span>
+            <span class="n">maxSum</span><span class="o">=</span><span class="n">thisSum</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="n">thisSum</span><span class="o">&lt;</span><span class="mi">0</span><span class="p">):</span>
+            <span class="c1">#这段不可能是最优序列的前缀，所以重新选择</span>
+            <span class="n">ThisSum</span><span class="o">=</span><span class="mi">0</span>
+    <span class="p">}</span>
+</code></pre></div></p>
+<p>动态规划策略的线性算法
+首先找到动态规划的状态转移方程：
+用 <span class="arithmatex">\(dp\left[  i\right]\)</span> 存储第 <span class="arithmatex">\(i\)</span> 位之前的最优解-index i 指向元素为结尾的所有连续子序列的最大和
+$$
+dp[i]=\begin{cases}
+arr[0],\;i=0 \
+\max\left{ (dp[i-1]+arr[i]),arr[i] \right} 
+\end{cases}
+$$
+故算法为</p>
+<div class="highlight"><pre><span></span><code><span class="n">Def</span> <span class="n">maxSeqSum5</span><span class="p">(</span><span class="n">arr</span><span class="p">[]):</span>
+    <span class="nb">int</span> <span class="n">dp</span><span class="p">[</span><span class="n">N</span><span class="p">]</span>
+    <span class="n">dp</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ans</span><span class="o">=-</span><span class="n">inf</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span><span class="n">i</span><span class="o">&lt;</span><span class="nb">len</span><span class="p">(</span><span class="n">arr</span><span class="p">);</span><span class="n">i</span><span class="o">++</span><span class="p">):</span>
+        <span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">MAX</span><span class="p">(</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">arr</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">ans</span><span class="o">=</span><span class="nb">max</span><span class="p">(</span><span class="n">ans</span><span class="p">,</span><span class="n">dp</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>  
+    <span class="c1">#ans 是 dp[i]中最大的一个，也就是所有不同结尾的最优子数组中最优的。</span>
+    <span class="k">return</span> <span class="n">ans</span>
+</code></pre></div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.tabs", "navigation.top", "navigation.indexes", "navigation.sections", "navigation.instant", "navigation.tracking", "navigation.expand", "navigation.tabs.sticky", "navigation.tabs.sticky.scrollable", "navigation.tabs.sticky.scrollable.mobile", "content.code.select", "search.suggest", "search.share"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      
+        <script src="../../../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+      
+    
+  </body>
+</html>
